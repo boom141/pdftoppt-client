@@ -1,7 +1,31 @@
 <main class="bg-gray-200 h-screen">
     <div class="flex flex-row">
-        <div class="bg-customDark w-[40%] p-5 text-white">
-            <!-- code here -->
+        <div class="bg-customDark p-5 text-white flex flex-row gap-x-10">
+           <div class="flex flex-col gap-y-5 ">
+               <div role="button" (click)="selectTool($event)" id="elements" [ngClass]="
+                    {'flex p-2 rounded-md flex-col items-center justify-center':true,
+                    'border border-slate-50': currentTool == 'elements'}">
+                   <img class="pointer-events-none" width="30" height="30" src="https://img.icons8.com/fluency-systems-regular/48/FFFFFF/shape--v1.png" alt="text"/>
+                   <p class="text-sm pointer-events-none">Elements</p>
+               </div>
+                <div role="button" (click)="selectTool($event)" id="text" [ngClass]="
+                    {'flex p-2 rounded-md flex-col items-center justify-center':true,
+                     'border border-slate-50': currentTool == 'text'}">
+                    <img class="pointer-events-none" width="30" height="30" src="https://img.icons8.com/ios/50/FFFFFF/text.png" alt="text"/>
+                    <p class="text-sm pointer-events-none">Text</p>
+                </div>
+                <div role="button"(click)="selectTool($event)" id="upload" [ngClass]="
+                    {'flex p-2 rounded-md flex-col items-center justify-center':true,
+                    'border border-slate-50': currentTool == 'upload'}">
+                    <img class="pointer-events-none" width="30" height="30" src="https://img.icons8.com/ios/50/FFFFFF/upload-to-cloud--v1.png" alt="upload-to-cloud--v1"/>
+                    <p class="text-sm pointer-events-none">Upload</p>
+                </div>
+           </div>
+           <ng-container >
+                <app-text class="flex flex-col gap-y-5 w-max" 
+                        *ngIf="currentTool == 'text'">
+                </app-text>
+           </ng-container>
         </div>
         <div class="flex flex-col w-screen h-screen">
             <div class="bg-white n p-3 text-center flex flex-row justify-between">
@@ -20,8 +44,13 @@
             <div class="bg-transparent flex-grow text-center flex justify-center items-center">
                 <canvas id="app-canvas" width="800" height="400"></canvas>
             </div>
-            <div class="bg-white n p-10 text-center">
-                slides
+            <div class="bg-white border  n p-5 text-center flex flex-row justify-start gap-x-5">
+                <ng-container *ngFor="let slide of renderSlides()">
+                    <app-slides [slideId]="slide.slide" [thumbnail]="slide.thumbnail" role="button"></app-slides>
+                </ng-container>
+               <button (click)="addSlides()"  class="border border-slate-400 rounded-md py-5 px-[3rem]">
+                    <img width="50" height="50" src="https://img.icons8.com/ios/50/plus-math--v1.png" alt="plus-math--v1"/>
+               </button>
             </div>
         </div>
     </div>

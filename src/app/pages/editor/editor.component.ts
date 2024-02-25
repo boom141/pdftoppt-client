@@ -1,21 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { fabric } from 'fabric';
+import { EditorService, presentationSlides } from 'src/app/services/editor.service';
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
 })
 
-export class EditorComponent implements OnInit{
-    private canvas: fabric.Canvas | any;
-
-    constructor(){
-
+export class EditorComponent implements OnInit {
+    currentTool?: string | null;
+    
+    constructor(private editor: EditorService){
+      
     }
 
-    ngOnInit(): void {
-      this.canvas = new fabric.Canvas('app-canvas',{
-        backgroundColor: 'white'
-      }); 
+    ngOnInit(): void {  
+      this.editor.initCanvas('app-canvas');
     }
+
+    renderSlides(): any {
+      return this.editor.slides
+    }
+
+    addSlides(): void{
+      this.editor.slides = [...this.editor.slides as presentationSlides[], this.editor.createSlides()]
+      this.editor.saveSlidesData();
+    }
+
+    selectTool(e: MouseEvent):void {
+      let target = e.target as HTMLElement;
+      this.currentTool = target.id;
+    }
+    
 } 
