@@ -14,7 +14,7 @@ export class EditorComponent implements OnInit {
     }
 
     ngOnInit(): void {  
-      this.editor.initCanvas('app-canvas');
+      this.editor.initCanvas();
     }
 
     renderSlides(): any {

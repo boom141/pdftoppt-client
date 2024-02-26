@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EditorService } from 'src/app/services/editor.service';
+import { fabric } from 'fabric';
 
 @Component({
   selector: 'app-text',
@@ -12,17 +13,54 @@ export class TextComponent {
       // initialization code here
     }
 
-    generateHeading(): any{
-      // this.fabric.createHeadingParagraph(this.fabric.canvas)
+    addHeading(): void {
+      let heading = new fabric.Textbox('A Heading',{
+        width: 300,
+        height: 100,
+        fontFamily: 'arial',
+        fontWeight: 'bolder',
+        fontSize: 60,
+        cursorColor: 'blue',
+        left: 250,
+        top: 100
+      });
+
+      this.editor.slides?.[this.editor.currentSlide as number].text.push(heading)
+      this.editor.saveSlidesData()
+
     }
 
-    generateSubheading(): any{
-      // this.fabric.createSubheadingParagraph(this.canvas)
+    addSubheading(): void {
+      let subheading = new fabric.Textbox('A subheading',{
+        width: 200,
+        height: 100,
+        fontFamily: 'arial',
+        fontWeight: 'bold',
+        fontSize: 30,
+        cursorColor: 'blue',
+        left: 300,
+        top: 170
+      });
+
+      this.editor.slides?.[this.editor.currentSlide as number].text.push(subheading)
+      this.editor.saveSlidesData()
     }
 
-    generateParagraph(): any{
-      // this.fabric.createBodyParagraph(this.canvas)
+    addParagraph(): void {
+      let text = new fabric.Textbox('A little bit of body text',{
+        width: 400,
+        height: 50,
+        fontFamily: 'arial',
+        fontWeight: 'normal',
+        fontSize: 20,
+        cursorColor: 'blue',
+        left: 305,
+        top: 210,
+      });
+
+      this.editor.slides?.[this.editor.currentSlide as number].text.push(text)
+      this.editor.saveSlidesData()
+
     }
-    
 
 }
