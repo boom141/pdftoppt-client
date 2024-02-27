@@ -9,9 +9,7 @@ import { EditorService, presentationSlides } from 'src/app/services/editor.servi
 export class EditorComponent implements OnInit {
     currentTool?: string | null;
     
-    constructor(private editor: EditorService){
-      
-    }
+    constructor(private editor: EditorService){}
 
     ngOnInit(): void {  
       this.editor.initCanvas();
@@ -29,6 +27,7 @@ export class EditorComponent implements OnInit {
     selectTool(e: MouseEvent):void {
       let target = e.target as HTMLElement;
       this.currentTool = target.id;
+      console.log(this.currentTool)
     }
     
 } 

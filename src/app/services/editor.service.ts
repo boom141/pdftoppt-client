@@ -7,10 +7,11 @@ import { fabric } from 'fabric';
 })
 
 export class EditorService {  
-    canvas: fabric.Canvas =  new fabric.Canvas('app-canvas',{backgroundColor: 'white'}); ;
+    canvas?: fabric.Canvas;
     slides: presentationSlides[] | undefined;
     slideCount: number = 0;
     currentSlide?: number = 0;
+
 
     createSlides(): presentationSlides{
       return {
@@ -23,7 +24,7 @@ export class EditorService {
 
     render(): void{
       let slide: any = this.slides?.[this.currentSlide as number]
-
+      console.log(slide)
       for(let text of slide.text){
         this.canvas?.add(text);
       }
@@ -39,17 +40,12 @@ export class EditorService {
     }
 
     initCanvas(): void {
-      
+      this.canvas = new fabric.Canvas('app-canvas',{backgroundColor: 'white'});
       let slidesData = this.getSlidesData()
       this.slideCount = slidesData ? slidesData.slice(-1)[0].slide + 1 : 0;
       this.slides = slidesData ? slidesData : [this.createSlides()]
       this.saveSlidesData();
-      this.render()
     }
-
-
-    
-
 }
 
 export interface presentationSlides{

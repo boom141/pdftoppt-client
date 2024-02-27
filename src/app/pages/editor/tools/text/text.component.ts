@@ -25,9 +25,9 @@ export class TextComponent {
         top: 100
       });
 
-      this.editor.slides?.[this.editor.currentSlide as number].text.push(heading)
-      this.editor.saveSlidesData()
-
+      // this.editor.slides?.[this.editor.currentSlide as number].text.push(heading)
+      // this.editor.saveSlidesData()
+      this.editor.canvas?.add(heading);
     }
 
     addSubheading(): void {
@@ -42,8 +42,9 @@ export class TextComponent {
         top: 170
       });
 
-      this.editor.slides?.[this.editor.currentSlide as number].text.push(subheading)
-      this.editor.saveSlidesData()
+      // this.editor.slides?.[this.editor.currentSlide as number].text.push(subheading)
+      // this.editor.saveSlidesData()
+      this.editor.canvas?.add(subheading);
     }
 
     addParagraph(): void {
@@ -58,8 +59,9 @@ export class TextComponent {
         top: 210,
       });
 
-      this.editor.slides?.[this.editor.currentSlide as number].text.push(text)
-      this.editor.saveSlidesData()
+      // this.editor.slides?.[this.editor.currentSlide as number].text.push(text)
+      // this.editor.saveSlidesData()
+      this.editor.canvas?.add(text);
 
     }
 
