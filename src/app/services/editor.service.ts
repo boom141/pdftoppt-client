@@ -24,11 +24,12 @@ export class EditorService {
 
     render(): void{
       let slide: any = this.slides?.[this.currentSlide as number]
-      console.log(slide)
+      this.clearCanvas()
       for(let text of slide.text){
-        this.canvas?.add(text);
+        this.canvas?.add(this.renderText(text));
       }
       
+      this.canvas?.renderAll();
     }
 
     getSlidesData(): presentationSlides[]{
@@ -45,6 +46,16 @@ export class EditorService {
       this.slideCount = slidesData ? slidesData.slice(-1)[0].slide + 1 : 0;
       this.slides = slidesData ? slidesData : [this.createSlides()]
       this.saveSlidesData();
+    }
+
+    clearCanvas(): void{
+      this.canvas?.getObjects().forEach(entity => {
+        this.canvas?.remove(entity)
+      })
+    }
+
+    renderText(textProps: any): fabric.Textbox{
+      return new fabric.Textbox(textProps.text, textProps.options);
     }
 }
 
