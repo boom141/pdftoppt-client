@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { EditorService } from 'src/app/services/editor.service';
-import { fabric } from 'fabric';
 
 @Component({
   selector: 'app-elements',
@@ -16,17 +15,20 @@ export class ElementsComponent {
 
   getElementSource(event: MouseEvent): void{
     let target = event.target as HTMLInputElement;
-    fabric.Image.fromURL(target.src, img => {
-      // Set image properties if needed (e.g., position, scale, etc.)
-      img.set({
+    let element = {
+      type: 'image',
+      src: target.src,
+      options: {
         left: 100,
         top: 100,
         scaleX: 0.2,
         scaleY: 0.2
-      });
+      }
+    }
 
-      // Add the image to the canvas
-      this.editor.canvas?.add(img);
-    });
-}
+    this.editor.slides?.[this.editor.currentSlide as number].objects.push(element)
+    this.editor.saveSlidesData()
+    this.editor.render()
+
+  }
 }

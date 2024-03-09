@@ -10,35 +10,7 @@ export class EditorService {
     canvas?: fabric.Canvas;
     slides: presentationSlides[] | undefined;
     slideCount: number = 0;
-    currentSlide?: number = 0;
-
-
-    createSlides(): presentationSlides{
-      return {
-            slide: this.slideCount++,
-            elements: [],
-            text: [],
-            thumbnail: null
-      }
-    }
-
-    render(): void{
-      let slide: any = this.slides?.[this.currentSlide as number]
-      this.clearCanvas()
-      for(let text of slide.text){
-        this.canvas?.add(this.renderText(text));
-      }
-      
-      this.canvas?.renderAll();
-    }
-
-    getSlidesData(): presentationSlides[]{
-      return JSON.parse(localStorage.getItem('slidesData') as any);
-    }
-
-    saveSlidesData(): void{
-      localStorage.setItem('slidesData',  JSON.stringify(this.slides));
-    }
+    currentSlide: number = 0;
 
     initCanvas(): void {
       this.canvas = new fabric.Canvas('app-canvas',{backgroundColor: 'white'});
@@ -48,20 +20,86 @@ export class EditorService {
       this.saveSlidesData();
     }
 
+    createSlides(): presentationSlides{
+      return {
+            slide: this.slideCount++,
+            backgroundColor: '#FFFFFF',
+            objects: Array(),
+            thumbnail: null
+      }
+    }
+
+    getSlidesData(): presentationSlides[]{
+      return JSON.parse(localStorage.getItem('slidesData') as any);
+    }
+
+    saveSlidesData(): void{
+      localStorage.setItem('slidesData',  JSON.stringify(this.slides));
+    }
+    
+    objectsSelection(): fabric.Object[]{
+      let activeObjects = this.canvas?.getActiveObjects()
+      return activeObjects as fabric.Object[];
+    }
+
+    deleteObjects(activeObjects: fabric.Object[]): void{
+      activeObjects.forEach(object => this.canvas?.remove(object))
+    }
+
+    renderText(textProps: any): fabric.Textbox{
+      return new fabric.Textbox(textProps.text, textProps.properties);
+    }
+
+    renderImg(imgProps: any): fabric.Image{
+      return fabric.Image.fromURL(imgProps.src, img => {
+        img.set(imgProps.options);
+        this.canvas?.add(img);
+      });
+    }
+
+    render(): void{
+      let slide: any = this.slides?.[this.currentSlide as number]
+      if(this.canvas){
+        this.canvas.backgroundColor = slide.backgroundColor
+      }
+      for(let object of slide.objects){
+        this.canvas?.add(this.renderText(object));
+      }
+      this.canvas?.renderAll();
+    }
+
     clearCanvas(): void{
       this.canvas?.getObjects().forEach(entity => {
         this.canvas?.remove(entity)
       })
     }
 
-    renderText(textProps: any): fabric.Textbox{
-      return new fabric.Textbox(textProps.text, textProps.options);
+    updateCanvasData(): void{
+      let canvasObjects = this.canvas?.getObjects() as any[]
+      let dataObjects = this.slides?.[this.currentSlide].objects
+
+      dataObjects?.forEach((object,indx) => {
+        object.text = canvasObjects[indx].text
+        for(let key in object.properties) {
+          let sanitizedObject = Object.assign({},canvasObjects[indx])
+          object.properties[key] = sanitizedObject[key]
+
+        }
+      })
+
+
+      if (this.slides && this.slides[this.currentSlide]) {
+        this.slides[this.currentSlide].objects = [...dataObjects as []];
+        this.saveSlidesData()
+      }
+
     }
+
 }
 
 export interface presentationSlides{
   slide: number,
-  elements: any[],
-  text: any[],
+  backgroundColor: string,
+  objects: any[],
   thumbnail: string | null
 }

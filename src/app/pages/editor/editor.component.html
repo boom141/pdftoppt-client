@@ -32,8 +32,13 @@
         </div>
         <div class="flex flex-col w-screen h-screen">
             <div class="bg-white n p-3 text-center flex flex-row justify-between">
-                <div>
-                    <!-- <canvas-attributes></canvas-attributes> -->
+                <div class="flex flex-row gap-x-2">
+                    <input role="button" class="border border-slate-400 w-[25%] rounded-md"
+                     [(colorPicker)]="pickerColor"
+                     [style.background]="pickerColor"
+                     (colorPickerChange)="changeCanvasBgColor()"
+                     [cpOutputFormat]="'hex'"
+                    />
                 </div>
                 <div class="flex flex-row gap-x-2">
                     <button class="bg-customDark border text-white font-medium p-3 w-32 rounded-md">
@@ -44,8 +49,8 @@
                     </button>
                 </div>
             </div>
-            <div class="bg-transparent flex-grow text-center flex justify-center items-center">
-                <canvas id="app-canvas" width="800" height="400"></canvas>
+            <div (click)="canvasEvent()" class=" bg-transparent flex-grow text-center flex justify-center items-center">
+                <canvas  id="app-canvas" width="800" height="400"></canvas>
             </div>
             <div class="bg-white border  n p-5 text-center flex flex-row justify-start gap-x-5">
                 <ng-container *ngFor="let slide of renderSlides()">

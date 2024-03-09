@@ -6,18 +6,21 @@ import { fabric } from 'fabric';
   selector: 'app-text',
   templateUrl: './text.component.html',
 })
-export class TextComponent {
+export class TextComponent  {
 
+    constructor(private editor: EditorService){}
 
-    constructor(private editor: EditorService){
-      // initialization code here
+    addText(textObject: textProps): void{ 
+      this.editor.slides?.[this.editor.currentSlide as number].objects.push(textObject)
+      this.editor.saveSlidesData()
+      this.editor.render()
     }
 
     addHeading(): void {
-      let heading: any = {
+      let heading: textProps = {
         type: 'text',
         text: 'A Heading',
-        options: {
+        properties: {
           width: 300,
           height: 100,
           fontFamily: 'arial',
@@ -25,20 +28,19 @@ export class TextComponent {
           fontSize: 60,
           cursorColor: 'blue',
           left: 250,
-          top: 100
+          top: 100,
+          fill: '#000000'
         }
       }
 
-      this.editor.slides?.[this.editor.currentSlide as number].text.push(heading)
-      this.editor.saveSlidesData()
-      this.editor.render()
+      this.addText(heading)
     }
 
     addSubheading(): void {
-      let subheading: any = {
+      let subheading: textProps = {
         type: 'text',
         text: 'A subheading',
-        options: {
+        properties: {
           width: 200,
           height: 100,
           fontFamily: 'arial',
@@ -46,30 +48,48 @@ export class TextComponent {
           fontSize: 30,
           cursorColor: 'blue',
           left: 300,
-          top: 170
+          top: 170,
+          fill: '#000000'
         }
       }
 
-      this.editor.slides?.[this.editor.currentSlide as number].text.push(subheading)
-      this.editor.saveSlidesData()
-      this.editor.render()
-
+      this.addText(subheading)
     }
 
     addParagraph(): void {
-      let text = new fabric.Textbox('A little bit of body text',{
-        width: 400,
-        height: 50,
-        fontFamily: 'arial',
-        fontWeight: 'normal',
-        fontSize: 20,
-        cursorColor: 'blue',
-        left: 305,
-        top: 210,
-      });
+      let text: textProps = {
+        type: 'text',
+        text: 'A little bit of body text',
+        properties: {
+          width: 400,
+          height: 50,
+          fontFamily: 'arial',
+          fontWeight: 'normal',
+          fontSize: 20,
+          cursorColor: 'blue',
+          left: 305,
+          top: 210,
+          fill: '#eb34e8'
+        }
+      }
 
-      // this.editor.slides?.[this.editor.currentSlide as number].text.push(text)
-      // this.editor.saveSlidesData()
+      this.addText(text)
     }
 
+}
+
+interface textProps {
+  type: string,
+  text: string,
+  properties: {
+    width: number,
+    height: number,
+    fontFamily: string,
+    fontWeight: string,
+    fontSize: number,
+    cursorColor: string,
+    left: number,
+    top: number
+    fill: string,
+  }
 }
