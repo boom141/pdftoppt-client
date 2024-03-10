@@ -43,9 +43,7 @@ export class EditorComponent implements OnInit {
     }
 
     canvasEvent():void {
-      let [objects] = this.editor.objectsSelection();
-      let object = Object.assign({}, objects);
-      console.log(object);
+      let objects = this.editor.objectsSelection();
     }
 
 } 

@@ -31,14 +31,15 @@
            </ng-container>
         </div>
         <div class="flex flex-col w-screen h-screen">
-            <div class="bg-white n p-3 text-center flex flex-row justify-between">
-                <div class="flex flex-row gap-x-2">
-                    <input role="button" class="border border-slate-400 w-[25%] rounded-md"
+            <div class="bg-white p-3 flex flex-row justify-between items-center gap-x-2">
+                <div class="flex flex-row gap-x-2  w-full">
+                    <!-- <input role="button" class="border border-slate-400 w-[25%] rounded-md"
                      [(colorPicker)]="pickerColor"
                      [style.background]="pickerColor"
                      (colorPickerChange)="changeCanvasBgColor()"
                      [cpOutputFormat]="'hex'"
-                    />
+                    /> -->
+                    <app-text-attribute></app-text-attribute>
                 </div>
                 <div class="flex flex-row gap-x-2">
                     <button class="bg-customDark border text-white font-medium p-3 w-32 rounded-md">

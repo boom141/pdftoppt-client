@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { EditorComponent } from "./editor.component";
 import { ToolsModule } from "./tools/tools.module";
 import { ColorPickerModule } from 'ngx-color-picker';
+import { toolsAttributesModule } from "./tools-attributes/tools-attributes.module";
 
 import { EditorService } from "src/app/services/editor.service";
 import { SlidesComponent } from './slides/slides.component';
@@ -13,7 +14,8 @@ import { SlidesComponent } from './slides/slides.component';
     imports: [
               CommonModule,
               ToolsModule,
-              ColorPickerModule
+              ColorPickerModule,
+              toolsAttributesModule
             ],
     exports: [EditorComponent],
     providers: [EditorService]

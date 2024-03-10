@@ -95,6 +95,12 @@ export class EditorService {
 
     }
 
+    applyEdit(): void{
+      this.updateCanvasData()
+      this.clearCanvas()
+      this.render()
+    }
+
 }
 
 export interface presentationSlides{
