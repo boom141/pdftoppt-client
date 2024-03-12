@@ -9,11 +9,26 @@ export class TextAttributeComponent {
   pickerColor: string = '#000000'
   isFontBold: boolean = false
   isUppercase: boolean = false
+  fontSize: number = 0
 
   constructor(private editor: EditorService){}
 
-  changeFontSize(): void{
+  changeFontSize(event: MouseEvent): void{
+    let objects = this.editor.objectsSelection()
+    let target = event.target as HTMLInputElement
 
+    if(objects){
+      objects.forEach((object: any) =>{
+        if(target.innerText === "+"){
+          object.fontSize = object.fontSize + 1
+        }else{
+          object.fontSize = object.fontSize - 1
+        }
+        this.fontSize = object.fontSize
+      })
+    }
+
+    this.editor.applyEdit()
   }
 
   changeFontFamily(event: Event): void{

@@ -1,5 +1,5 @@
 <main class="flex flex-row gap-x-3 justify-start items-center">
-    <select role="button" (change)="changeFontFamily($event)" class="border-2 border-slate-400 p-[.3rem] rounded-md" id="">
+    <select title="Font" role="button" (change)="changeFontFamily($event)" class="border-2 border-slate-400 p-[.3rem] rounded-md" id="">
         <option value="Arial">Arial</option>
         <option value="Helvetica">Helvetica</option>
         <option value="Times New Roman">Times New Roman</option>
@@ -8,12 +8,12 @@
         <option value="Verdana">Verdana</option>
     </select>
     <div class="border-2 border-slate-400  text-center rounded-md overflow-hidden font-semibold">
-        <button class="text-center border py-1 px-3">-</button>
-        <input class="w-[3rem] h-[2rem] outline-none border-l border-r border-slate-400 text-center" type="text" value="180">
-        <button class="text-center border py-1 px-3">+</button>
+        <button title="Decrease Font" (click)="changeFontSize($event)" class="text-center border py-1 px-3">-</button>
+        <input class="w-[3rem] h-[2rem] outline-none border-l border-r border-slate-400 text-center" type="text" [value]="fontSize">
+        <button title="Increase Font" (click)="changeFontSize($event)" class="text-center border py-1 px-3">+</button>
     </div>
     <div class="flex flex-col justify-start items-center gap-y-[-1rem]  mt-[-.3rem]">
-        <p class="font-semibold text-lg">A</p>
+        <p title="Font Color" class="font-semibold text-lg cursor-pointer">A</p>
         <input role="button" class="outline-none w-[2rem] h-[.5rem] rounded-md mt-[-.2rem]"
         [(colorPicker)]="pickerColor"
         [style.background]="pickerColor"
@@ -21,6 +21,6 @@
         [cpOutputFormat]="'hex'"
         />
     </div>
-    <p role="button" (click)="changeFontWeight()" [ngClass]="{'text-xl select-none': true, 'font-bold': isFontBold}">B</p>
-    <p role="button" (click)="changeFontCase()" class="font-normal text-xl">aA</p>
+    <p title="Bold" role="button" (click)="changeFontWeight()" [ngClass]="{'text-xl select-none': true, 'font-bold': isFontBold}">B</p>
+    <p title="Uppercase" role="button" (click)="changeFontCase()" class="font-normal text-xl">aA</p>
 </main>

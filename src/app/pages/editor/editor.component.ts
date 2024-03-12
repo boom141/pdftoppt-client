@@ -9,11 +9,14 @@ import { EditorService, presentationSlides } from 'src/app/services/editor.servi
 export class EditorComponent implements OnInit {
     currentTool?: string | null;
     pickerColor: string = '#FFFFFF'
-    
+    entity: string = 'canvas';
+    canvasColor?: string;
+
     constructor(private editor: EditorService){}
 
     ngOnInit(): void {  
       this.editor.initCanvas();
+      this.pickerColor = this.editor.slides?.[0].backgroundColor as string;
       this.editor.render();
     }
   
@@ -43,7 +46,16 @@ export class EditorComponent implements OnInit {
     }
 
     canvasEvent():void {
-      let objects = this.editor.objectsSelection();
+      let objects: any = this.editor.objectsSelection();
+      if(objects.length > 0){
+        if('text' in objects[objects.length - 1]){
+          this.entity = 'text';
+        }else{
+          this.entity = 'element';
+        }
+      }else{
+        this.entity = 'canvas'
+      }
     }
 
 } 

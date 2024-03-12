@@ -63,7 +63,11 @@ export class EditorService {
         this.canvas.backgroundColor = slide.backgroundColor
       }
       for(let object of slide.objects){
-        this.canvas?.add(this.renderText(object));
+          if(object.type === 'text'){
+            this.canvas?.add(this.renderText(object));
+          }else{
+            this.renderImg(object);
+          }
       }
       this.canvas?.renderAll();
     }

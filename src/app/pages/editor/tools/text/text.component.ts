@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { EditorService } from 'src/app/services/editor.service';
-import { fabric } from 'fabric';
 
 @Component({
   selector: 'app-text',
@@ -13,6 +12,7 @@ export class TextComponent  {
     addText(textObject: textProps): void{ 
       this.editor.slides?.[this.editor.currentSlide as number].objects.push(textObject)
       this.editor.saveSlidesData()
+      this.editor.clearCanvas()
       this.editor.render()
     }
 
@@ -69,7 +69,7 @@ export class TextComponent  {
           cursorColor: 'blue',
           left: 305,
           top: 210,
-          fill: '#eb34e8'
+          fill: '#000000'
         }
       }
 
