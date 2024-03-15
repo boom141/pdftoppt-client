@@ -12,15 +12,14 @@
         <input class="w-[3rem] h-[2rem] outline-none border-l border-r border-slate-400 text-center" type="text" [value]="fontSize">
         <button title="Increase Font" (click)="changeFontSize($event)" class="text-center border py-1 px-3">+</button>
     </div>
-    <div class="flex flex-col justify-start items-center gap-y-[-1rem]  mt-[-.3rem]">
-        <p title="Font Color" class="font-semibold text-lg cursor-pointer">A</p>
-        <input role="button" class="outline-none w-[2rem] h-[.5rem] rounded-md mt-[-.2rem]"
+    <div title="Font Color" class="flex flex-col justify-start items-center gap-y-[-1rem] mt-[-.3rem]">
+        <input role="button" type="button" value="A" class="w-[2rem] text-center  outline-none font-semibold text-lg"
         [(colorPicker)]="pickerColor"
-        [style.background]="pickerColor"
         (colorPickerChange)="changeFontColor()"
         [cpOutputFormat]="'hex'"
         />
+        <p [style.background]="pickerColor" class="w-[2rem] h-[.5rem] rounded-md mt-[-.2rem]"> </p>
     </div>
     <p title="Bold" role="button" (click)="changeFontWeight()" [ngClass]="{'text-xl select-none': true, 'font-bold': isFontBold}">B</p>
-    <p title="Uppercase" role="button" (click)="changeFontCase()" class="font-normal text-xl">aA</p>
+    <p title="Uppercase" role="button" (click)="changeFontCase()" class="font-normal text-xl select-none">aA</p>
 </main>

@@ -57,7 +57,7 @@ export class EditorService {
       });
     }
 
-    render(): void{
+    initRender(): void{
       let slide: any = this.slides?.[this.currentSlide as number]
       if(this.canvas){
         this.canvas.backgroundColor = slide.backgroundColor
@@ -81,18 +81,19 @@ export class EditorService {
     updateCanvasData(): void{
       let canvasObjects = this.canvas?.getObjects() as any[]
       let dataObjects = this.slides?.[this.currentSlide].objects
-
+      
+      
       dataObjects?.forEach((object,indx) => {
         object.text = canvasObjects[indx].text
         for(let key in object.properties) {
           let sanitizedObject = Object.assign({},canvasObjects[indx])
           object.properties[key] = sanitizedObject[key]
-
         }
       })
-
+      
 
       if (this.slides && this.slides[this.currentSlide]) {
+        this.slides[this.currentSlide].backgroundColor = this.canvas?.backgroundColor as string
         this.slides[this.currentSlide].objects = [...dataObjects as []];
         this.saveSlidesData()
       }
@@ -101,8 +102,7 @@ export class EditorService {
 
     applyEdit(): void{
       this.updateCanvasData()
-      this.clearCanvas()
-      this.render()
+      this.canvas?.renderAll()
     }
 
 }

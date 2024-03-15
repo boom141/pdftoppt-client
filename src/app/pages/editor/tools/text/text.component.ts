@@ -10,14 +10,15 @@ export class TextComponent  {
     constructor(private editor: EditorService){}
 
     addText(textObject: textProps): void{ 
+      textObject.properties.selected = true
+
+      // make a reusable functions of the 2 logics below ⬇️
       this.editor.slides?.[this.editor.currentSlide as number].objects.push(textObject)
-      this.editor.saveSlidesData()
-      this.editor.clearCanvas()
-      this.editor.render()
+      this.editor.canvas?.add(this.editor.renderText(textObject))
     }
 
     addHeading(): void {
-      let heading: textProps = {
+      let heading: any = {
         type: 'text',
         text: 'A Heading',
         properties: {
@@ -37,7 +38,7 @@ export class TextComponent  {
     }
 
     addSubheading(): void {
-      let subheading: textProps = {
+      let subheading: any = {
         type: 'text',
         text: 'A subheading',
         properties: {
@@ -57,7 +58,7 @@ export class TextComponent  {
     }
 
     addParagraph(): void {
-      let text: textProps = {
+      let text: any = {
         type: 'text',
         text: 'A little bit of body text',
         properties: {
@@ -91,5 +92,6 @@ interface textProps {
     left: number,
     top: number
     fill: string,
+    selected: boolean
   }
 }

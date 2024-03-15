@@ -28,7 +28,7 @@ export class ElementsComponent {
 
     this.editor.slides?.[this.editor.currentSlide as number].objects.push(element)
     this.editor.saveSlidesData()
-    this.editor.render()
+    this.editor.initRender()
 
   }
 }

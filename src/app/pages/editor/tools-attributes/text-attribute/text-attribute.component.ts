@@ -49,10 +49,11 @@ export class TextAttributeComponent {
     if(objects){
       objects.forEach((object: any) =>{
         object.fill = this.pickerColor
+        this.editor.updateCanvasData()
       })
     }
 
-    this.editor.applyEdit()
+    this.editor.canvas?.renderAll()
   }
 
   changeFontWeight(): void{

@@ -16,6 +16,6 @@ export class SlidesComponent {
     this.editor.updateCanvasData()
     this.editor.clearCanvas()
     this.editor.currentSlide = this.slideId as number
-    this.editor.render()
+    this.editor.initRender()
   }
 }

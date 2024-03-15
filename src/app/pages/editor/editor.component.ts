@@ -17,7 +17,7 @@ export class EditorComponent implements OnInit {
     ngOnInit(): void {  
       this.editor.initCanvas();
       this.pickerColor = this.editor.slides?.[0].backgroundColor as string;
-      this.editor.render();
+      this.editor.initRender();
     }
   
     renderSlides(): any {
@@ -37,11 +37,10 @@ export class EditorComponent implements OnInit {
     changeCanvasBgColor(): void {
       if(this.editor.canvas){
         if(this.editor.slides){
-          this.editor.slides[this.editor.currentSlide].backgroundColor = this.pickerColor
+          this.editor.canvas.backgroundColor = this.pickerColor
           this.editor.updateCanvasData()
         }
-        this.editor.clearCanvas()
-        this.editor.render()
+        this.editor.canvas.renderAll()
       }
     }
 
@@ -56,6 +55,8 @@ export class EditorComponent implements OnInit {
       }else{
         this.entity = 'canvas'
       }
+
+      this.editor.updateCanvasData()
     }
 
 } 
