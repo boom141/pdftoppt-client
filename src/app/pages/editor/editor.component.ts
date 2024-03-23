@@ -38,9 +38,8 @@ export class EditorComponent implements OnInit {
       if(this.editor.canvas){
         if(this.editor.slides){
           this.editor.canvas.backgroundColor = this.pickerColor
-          this.editor.updateCanvasData()
         }
-        this.editor.canvas.renderAll()
+        this.editor.applyEdit()
       }
     }
 
@@ -55,7 +54,7 @@ export class EditorComponent implements OnInit {
       }else{
         this.entity = 'canvas'
       }
-
+      console.log(objects)
       this.editor.updateCanvasData()
     }
 

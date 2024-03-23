@@ -20,6 +20,21 @@ export class EditorService {
       this.saveSlidesData();
     }
 
+    initRender(): void{
+      let slide: any = this.slides?.[this.currentSlide as number]
+      if(this.canvas){
+        this.canvas.backgroundColor = slide.backgroundColor
+      }
+      for(let object of slide.objects){
+          if(object.type === 'text'){
+            this.renderText(object);
+          }else{
+            this.renderElem(object);
+          }
+      }
+      this.canvas?.renderAll();
+    }
+
     createSlides(): presentationSlides{
       return {
             slide: this.slideCount++,
@@ -46,30 +61,18 @@ export class EditorService {
       activeObjects.forEach(object => this.canvas?.remove(object))
     }
 
-    renderText(textProps: any): fabric.Textbox{
-      return new fabric.Textbox(textProps.text, textProps.properties);
+    registerObjectToSlide(object: any): void{
+      this.slides?.[this.currentSlide as number].objects.push(object)
     }
 
-    renderImg(imgProps: any): fabric.Image{
-      return fabric.Image.fromURL(imgProps.src, img => {
-        img.set(imgProps.options);
-        this.canvas?.add(img);
-      });
+    renderText(textProps: any): void{
+      let text = new fabric.Textbox(textProps.text, textProps.properties);
+      this.canvas?.add(text);
     }
 
-    initRender(): void{
-      let slide: any = this.slides?.[this.currentSlide as number]
-      if(this.canvas){
-        this.canvas.backgroundColor = slide.backgroundColor
-      }
-      for(let object of slide.objects){
-          if(object.type === 'text'){
-            this.canvas?.add(this.renderText(object));
-          }else{
-            this.renderImg(object);
-          }
-      }
-      this.canvas?.renderAll();
+    renderElem(imgProps: any): void{
+      let element = new fabric.Image(imgProps.src, imgProps.properties)
+      this.canvas?.add(element);
     }
 
     clearCanvas(): void{
@@ -78,13 +81,16 @@ export class EditorService {
       })
     }
 
+
     updateCanvasData(): void{
       let canvasObjects = this.canvas?.getObjects() as any[]
       let dataObjects = this.slides?.[this.currentSlide].objects
       
-      
       dataObjects?.forEach((object,indx) => {
-        object.text = canvasObjects[indx].text
+        if(object.type === 'text') {
+          object.text = canvasObjects[indx].text
+        }
+
         for(let key in object.properties) {
           let sanitizedObject = Object.assign({},canvasObjects[indx])
           object.properties[key] = sanitizedObject[key]

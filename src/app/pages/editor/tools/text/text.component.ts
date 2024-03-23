@@ -12,9 +12,9 @@ export class TextComponent  {
     addText(textObject: textProps): void{ 
       textObject.properties.selected = true
 
-      // make a reusable functions of the 2 logics below ⬇️
-      this.editor.slides?.[this.editor.currentSlide as number].objects.push(textObject)
-      this.editor.canvas?.add(this.editor.renderText(textObject))
+      this.editor.registerObjectToSlide(textObject)
+      this.editor.renderText(textObject)
+      this.editor.applyEdit()
     }
 
     addHeading(): void {

@@ -14,11 +14,12 @@ export class ElementsComponent {
 
 
   getElementSource(event: MouseEvent): void{
-    let target = event.target as HTMLInputElement;
-    let element = {
-      type: 'image',
-      src: target.src,
-      options: {
+    let target = event.target as HTMLImageElement;
+    console.log(target)
+    let element: any = {
+      type: 'element',
+      src: target,
+      properties: {
         left: 100,
         top: 100,
         scaleX: 0.2,
@@ -26,9 +27,8 @@ export class ElementsComponent {
       }
     }
 
-    this.editor.slides?.[this.editor.currentSlide as number].objects.push(element)
-    this.editor.saveSlidesData()
-    this.editor.initRender()
-
+    this.editor.registerObjectToSlide(element)
+    this.editor.renderElem(element)
+    this.editor.applyEdit()
   }
 }
