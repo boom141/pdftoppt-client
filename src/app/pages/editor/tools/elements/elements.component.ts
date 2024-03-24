@@ -15,10 +15,10 @@ export class ElementsComponent {
 
   getElementSource(event: MouseEvent): void{
     let target = event.target as HTMLImageElement;
-    console.log(target)
+
     let element: any = {
       type: 'element',
-      src: target,
+      src: target.src,
       properties: {
         left: 100,
         top: 100,

@@ -71,7 +71,10 @@ export class EditorService {
     }
 
     renderElem(imgProps: any): void{
-      let element = new fabric.Image(imgProps.src, imgProps.properties)
+      let targetElement = document.createElement("img");
+      targetElement.src = imgProps.src
+
+      let element = new fabric.Image(targetElement, imgProps.properties)
       this.canvas?.add(element);
     }
 
@@ -79,6 +82,7 @@ export class EditorService {
       this.canvas?.getObjects().forEach(entity => {
         this.canvas?.remove(entity)
       })
+
     }
 
 
@@ -101,8 +105,10 @@ export class EditorService {
       if (this.slides && this.slides[this.currentSlide]) {
         this.slides[this.currentSlide].backgroundColor = this.canvas?.backgroundColor as string
         this.slides[this.currentSlide].objects = [...dataObjects as []];
+        this.slides[this.currentSlide].thumbnail = this.canvas?.toDataURL() as string
         this.saveSlidesData()
       }
+
 
     }
 

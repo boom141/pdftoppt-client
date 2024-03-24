@@ -18,7 +18,7 @@
         (colorPickerChange)="changeFontColor()"
         [cpOutputFormat]="'hex'"
         />
-        <p [style.background]="pickerColor" class="w-[2rem] h-[.5rem] rounded-md mt-[-.2rem]"> </p>
+        <p [style.background]="pickerColor" class="border-2 border-slate-400 w-[2rem] h-[.5rem] rounded-md mt-[-.2rem]"> </p>
     </div>
     <p title="Bold" role="button" (click)="changeFontWeight()" [ngClass]="{'text-xl select-none': true, 'font-bold': isFontBold}">B</p>
     <p title="Uppercase" role="button" (click)="changeFontCase()" class="font-normal text-xl select-none">aA</p>

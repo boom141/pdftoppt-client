@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { EditorService } from 'src/app/services/editor.service';
 
 
@@ -6,11 +6,15 @@ import { EditorService } from 'src/app/services/editor.service';
   selector: 'app-slides',
   templateUrl: './slides.component.html',
 })
-export class SlidesComponent {
+export class SlidesComponent implements OnInit{
    @Input() slideId?: number;
-   @Input() thumbnail?: string | null;
+   @Input() thumbnail?: string;
 
-   constructor(private editor: EditorService){}
+  constructor(private editor: EditorService){}
+  
+  ngOnInit(): void {
+    this.thumbnail = this.thumbnail || this.editor.canvas?.toDataURL()
+  }
 
   setCurrentSlide(): void{
     this.editor.updateCanvasData()

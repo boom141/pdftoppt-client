@@ -59,7 +59,7 @@
                 <ng-container *ngFor="let slide of renderSlides()">
                     <app-slides [slideId]="slide.slide" [thumbnail]="slide.thumbnail" role="button"></app-slides>
                 </ng-container>
-               <button (click)="addSlides()"  class="border border-slate-400 rounded-md py-5 px-[3rem]">
+               <button (click)="addSlides()"  class="border border-slate-400 rounded-md h-[5rem] w-[9rem] flex justify-center items-center bg-slate-300">
                     <img width="50" height="50" src="https://img.icons8.com/ios/50/plus-math--v1.png" alt="plus-math--v1"/>
                </button>
             </div>
