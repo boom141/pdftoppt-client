@@ -13,7 +13,7 @@ export class SlidesComponent implements OnInit{
   constructor(private editor: EditorService){}
   
   ngOnInit(): void {
-    this.thumbnail = this.thumbnail || this.editor.canvas?.toDataURL()
+
   }
 
   setCurrentSlide(): void{

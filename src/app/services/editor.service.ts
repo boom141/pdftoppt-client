@@ -72,6 +72,7 @@ export class EditorService {
 
     renderElem(imgProps: any): void{
       let targetElement = document.createElement("img");
+      targetElement.crossOrigin = "anonymous";
       targetElement.src = imgProps.src
 
       let element = new fabric.Image(targetElement, imgProps.properties)
