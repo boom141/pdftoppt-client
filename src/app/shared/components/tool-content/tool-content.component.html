@@ -1,0 +1,24 @@
+<main class="flex flex-col gap-y-3 justify-start">
+    @if(isLoading){
+        <app-placeholder></app-placeholder>
+    }@else{
+        <ng-container>
+            @for(data of loadedData; track data){
+                <section class="flex flex-col gap-y-3 justify-start">
+                    <p class="p-2">{{data.category}}</p>
+                    <ng-image-slider 
+                        [imageSize]="{width: 100, height: 100, space: 5}"
+                        [infinite]="true" 
+                        [animationSpeed]="0.8"
+                        [manageImageRatio]="true"
+                        [imagePopup]="false"
+                        (imageClick)="clickedElement($event, data)"
+                        [images]="data.images" #nav>
+                    </ng-image-slider>
+                </section>
+            }@empty {
+                <p class="p-2">No content found....</p>
+            }
+        </ng-container>
+    }
+</main>
