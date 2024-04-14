@@ -1,4 +1,4 @@
-import { Component, Input , OnInit} from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { PlaceholderComponent } from '../placeholder/placeholder.component';
 
@@ -15,17 +15,19 @@ export class ToolContentComponent implements OnInit {
   @Input() loadedData?: Array<dataProperties>
   @Input() isLoading?: boolean
 
+  @Output() getContentSource: EventEmitter<string> = new EventEmitter<string>();
+
   ngOnInit(): void {
     // execute a code here..
   }
   
   clickedElement(indx:number, imageGroup: dataProperties): void{
-    console.log(imageGroup.images[indx]);
+      this.getContentSource.emit(imageGroup.images[indx].image)
   }
 
 }
 
 interface dataProperties {
   category: string,
-  images: Array<object>
+  images: Array<any>
 }

@@ -36,13 +36,12 @@ export class ElementsComponent implements OnInit{
     }
   }
 
-  getElementSource(event: MouseEvent): void{
-    let target = event.target as HTMLImageElement;
-
+  async getElementSource(src: string): Promise<void>{
     let element: any = {
-      type: 'element',
-      src: target.src,
       properties: {
+        id: this.editor.createId(),
+        src: src,
+        type: 'element',
         left: 100,
         top: 100,
         scaleX: 0.2,
@@ -55,6 +54,5 @@ export class ElementsComponent implements OnInit{
 
     this.editor.registerObjectToSlide(element)
     this.editor.renderElem(element)
-    this.editor.applyEdit()
   }
 }

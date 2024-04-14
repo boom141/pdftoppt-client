@@ -40,12 +40,13 @@
                                 @if(currentTool == 'elements'){
                                     <app-elements [currentTool]="currentTool" class="flex flex-col gap-y-5 w-full"></app-elements>
                                 }
+                                @if(currentTool ==  'uploadElem'){
+                                <app-upload-elements [formData]="newForm" [currentTool]="currentTool" class="flex flex-col gap-y-5 w-full"></app-upload-elements> 
+                                }
                                 <!-- <app-elements class="flex flex-col gap-y-5 w-full" 
                                         *ngIf="currentTool == 'elements'">
-                                </app-elements>
-                                <app-upload-elements [formData]="newForm" [currentTool]="currentTool" class="flex flex-col gap-y-5 w-full" 
-                                        *ngIf="currentTool == 'uploadElem'">
-                                </app-upload-elements> -->
+                                </app-elements>-->
+                        
                         </ng-container>
                     </div>
                </div>
@@ -54,15 +55,7 @@
         <div class="flex flex-col w-screen h-screen">
             <div class="bg-white p-3 flex flex-row justify-between items-center gap-x-2">
                 <div class="flex flex-row w-full justify-start items-center">
-                    <!-- <div class="w-max border-r-2 border-slate-400 p-2">
-                        <input role="button" class="border-2 border-slate-400 w-[3rem] rounded-md outline-none caret-transparent p-1"
-                         [(colorPicker)]="pickerColor"
-                         [style.background]="pickerColor"
-                         (colorPickerChange)="changeCanvasBgColor()"
-                         [cpOutputFormat]="'hex'"
-                        />
-                    </div>
-                    <app-text-attribute class="p-2"></app-text-attribute> -->
+                    <app-entity-attributes class="p-2"></app-entity-attributes> 
                 </div>
                 <div class="flex flex-row gap-x-2">
                     <button class="bg-customDark border text-white font-medium p-3 w-32 rounded-md">

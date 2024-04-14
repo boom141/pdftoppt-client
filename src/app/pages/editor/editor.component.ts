@@ -1,10 +1,12 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { AfterViewInit, Component, OnInit, inject } from '@angular/core';
 import { ApiReqService } from '../../services/apiReq.service';
 import { EditorService } from '../../services/editor.service';
 import { ElementsComponent } from './tools/elements/elements.component';
 
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { EntityAttributesComponent } from './entity-attributes/entity-attributes.component';
+import { UploadElementsComponent } from './tools/upload-elements/upload-elements.component';
 
 @Component({
   selector: 'app-editor',
@@ -14,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule,
     ElementsComponent,
+    UploadElementsComponent,
+    EntityAttributesComponent
   ],
   providers: [
     ApiReqService,
@@ -43,7 +47,8 @@ export class EditorComponent implements OnInit {
       this.editor.initRender();
     }
     
-    async onSelectFile(e: Event){
+
+    onSelectFile(e: Event){
       let target = e.target as HTMLInputElement
       let file = target.files?.[0];
 
@@ -51,12 +56,11 @@ export class EditorComponent implements OnInit {
       this.newForm.append('file', file as Blob)
 
       this.isToolContent = true
-
     };
 
-    renderSlides(): any {
-      return this.editor.slides
-    }
+    // renderSlides(): any {
+    //   return this.editor.slides
+    // }
 
     // addSlides(): void{
     //   this.editor.slides = [...this.editor.slides as presentationSlides[], this.editor.createSlides()]
@@ -74,15 +78,6 @@ export class EditorComponent implements OnInit {
       this.isToolContent = this.currentTool !== 'uploadElem' ? true : false
     }
     
-    changeCanvasBgColor(): void {
-      if(this.editor.canvas){
-        if(this.editor.slides){
-          this.editor.canvas.backgroundColor = this.pickerColor
-          this.editor.applyEdit()
-        }
-      }
-    }
-
     canvasEvent():void {
       this.editor.updateCanvasData()
     }

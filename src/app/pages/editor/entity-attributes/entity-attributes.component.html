@@ -1,0 +1,38 @@
+<main class="flex flex-row gap-x-3 justify-start items-center">
+    <div class="w-max border-r-2 border-customDark p-2">
+        <input role="button" class="border-2 border-customDark w-[3rem] rounded-md outline-none caret-transparent p-1"
+            [(colorPicker)]="backgroundColor"
+            [style.background]="backgroundColor"
+            (colorPickerChange)="changeCanvasBgColor()"
+            [cpOutputFormat]="'hex'"
+        />
+    </div>
+    <select title="Font" [value]="fontFamily" role="button" (change)="changeFontFamily($event)" class="border-2 border-customDark p-[.3rem] rounded-md" id="">
+        <option value="Arial">Arial</option>
+        <option value="Helvetica">Helvetica</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Courier New">Courier New</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Verdana">Verdana</option>
+    </select>
+    <div class="border-2 border-customDark  text-center rounded-md overflow-hidden font-semibold">
+        <button title="Decrease Font" (click)="changeFontSize($event)" class="text-center border py-1 px-3">-</button>
+        <input class="w-[3rem] h-[2rem] outline-none border-l border-r border-slate-400 text-center" type="text" [value]="fontSize">
+        <button title="Increase Font" (click)="changeFontSize($event)" class="text-center border py-1 px-3">+</button>
+    </div>
+    <div title="Font Color" class="flex flex-col justify-start items-center gap-y-[-1rem] mt-[-.3rem]">
+        <input role="button" type="button" value="A" class="w-[2rem] text-center  outline-none font-semibold text-lg"
+        [(colorPicker)]="fontColor"
+        (colorPickerChange)="changeFontColor()"
+        [cpOutputFormat]="'hex'"
+        />
+        <p [style.background]="fontColor" class="border-2 border-slate-400 w-[2rem] h-[.5rem] rounded-md mt-[-.2rem]"> </p>
+    </div>
+    <p title="Bold" role="button" (click)="changeFontWeight()" [ngClass]="{'text-xl select-none': true, 'font-bold': isFontBold}">B</p>
+    <p title="Uppercase" role="button" (click)="changeFontCase()" class="font-normal text-xl select-none">aA</p>
+    <div class="w-max border-l-2 border-customDark p-2">
+        <div role="button" (click)="deleteObject()" class="flex justify-between items-center rounded-md p-1">
+            <img class="pointer-events-none" width="30" height="30" src="https://img.icons8.com/windows/32/1f2937/trash.png" alt="trash"/>
+        </div>
+    </div>
+</main>

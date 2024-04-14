@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable, Output } from "@angular/core";
 import { fabric } from "fabric";
 
 
@@ -11,6 +11,16 @@ export class EditorService {
     slides: presentationSlides[] | undefined;
     slideCount: number = 0;
     currentSlide: number = 0;
+
+    @Output() renderCanvasObjects: EventEmitter<any> = new EventEmitter<any>();
+
+    createId(): number{
+      return new Date().getTime();
+    }
+
+    getCurrentSlide(): presentationSlides{
+      return this.slides?.[this.currentSlide as number] as presentationSlides
+    }
 
     initCanvas(): void {
       this.canvas = new fabric.Canvas('app-canvas',{backgroundColor: 'white'});
@@ -32,7 +42,6 @@ export class EditorService {
             this.renderElem(object);
           }
       }
-      this.canvas?.renderAll();
     }
 
     createSlides(): presentationSlides{
@@ -58,11 +67,20 @@ export class EditorService {
     }
 
     deleteObjects(activeObjects: fabric.Object[]): void{
-      activeObjects.forEach(object => this.canvas?.remove(object))
+      activeObjects.forEach((activeObject: any) => {
+        let newSLideObjects = this.getCurrentSlide().objects.filter(slideObject => {
+          return slideObject.properties.id !== activeObject.id
+        })
+        this.getCurrentSlide().objects = newSLideObjects
+        this.canvas?.remove(activeObject)
+      })
+
+      this.saveSlidesData()
     }
 
     registerObjectToSlide(object: any): void{
-      this.slides?.[this.currentSlide as number].objects.push(object)
+      this.getCurrentSlide().objects.push(object)
+      this.saveSlidesData()
     }
 
     renderText(textProps: any): void{
@@ -71,11 +89,11 @@ export class EditorService {
     }
 
     renderElem(imgProps: any): void{
-      let targetElement = document.createElement("img");
-      targetElement.src = imgProps.src
-
-      let element = new fabric.Image(targetElement, imgProps.properties)
-      this.canvas?.add(element);
+      fabric.Image.fromURL(imgProps.properties.src, (elem) => {
+        elem.set(imgProps.properties);
+        this.canvas?.add(elem);
+        this.canvas?.renderAll()
+      });
     }
 
     clearCanvas(): void{
@@ -85,13 +103,12 @@ export class EditorService {
 
     }
 
-
     updateCanvasData(): void{
       let canvasObjects = this.canvas?.getObjects() as any[]
       let dataObjects = this.slides?.[this.currentSlide].objects
       
       dataObjects?.forEach((object,indx) => {
-        if(object.type === 'text') {
+        if(object.properties.type === 'text') {
           object.text = canvasObjects[indx].text
         }
 
