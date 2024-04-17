@@ -42,6 +42,8 @@ export class EditorService {
             this.renderElem(object);
           }
       }
+
+      
     }
 
     createSlides(): presentationSlides{
@@ -86,6 +88,7 @@ export class EditorService {
     renderText(textProps: any): void{
       let text = new fabric.Textbox(textProps.text, textProps.properties);
       this.canvas?.add(text);
+      this.canvas?.renderAll()
     }
 
     renderElem(imgProps: any): void{

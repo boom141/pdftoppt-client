@@ -4,7 +4,6 @@ import { ApiReqService } from '../../../../services/apiReq.service';
 import { EditorService } from '../../../../services/editor.service';
 import { ToolContentComponent } from '../../../../shared/components/tool-content/tool-content.component';
 
-
 // create a service file for elements (eg: elements.service)
 // re-create the uplaod feature
 

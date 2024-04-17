@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { EntityAttributesComponent } from './entity-attributes/entity-attributes.component';
 import { UploadElementsComponent } from './tools/upload-elements/upload-elements.component';
+import { TextComponent } from './tools/text/text.component';
 
 @Component({
   selector: 'app-editor',
@@ -17,7 +18,8 @@ import { UploadElementsComponent } from './tools/upload-elements/upload-elements
     HttpClientModule,
     ElementsComponent,
     UploadElementsComponent,
-    EntityAttributesComponent
+    EntityAttributesComponent,
+    TextComponent
   ],
   providers: [
     ApiReqService,

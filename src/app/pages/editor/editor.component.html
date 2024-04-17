@@ -43,6 +43,9 @@
                                 @if(currentTool ==  'uploadElem'){
                                 <app-upload-elements [formData]="newForm" [currentTool]="currentTool" class="flex flex-col gap-y-5 w-full"></app-upload-elements> 
                                 }
+                                @if(currentTool ==  'text'){
+                                    <app-text [currentTool]="currentTool" class="flex flex-col gap-y-5 w-full"></app-text> 
+                                }
                                 <!-- <app-elements class="flex flex-col gap-y-5 w-full" 
                                         *ngIf="currentTool == 'elements'">
                                 </app-elements>-->
