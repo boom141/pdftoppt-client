@@ -17,10 +17,9 @@ import { ToolContentComponent } from '../../../../shared/components/tool-content
 })
 
 export class UploadElementsComponent implements OnInit {
-    @Input() formData?: FormData
     @Input() currentTool?: string 
 
-
+    isFileSelected: boolean = false
     isLoading: boolean = true;
     data?: Array<any>
 
@@ -29,18 +28,30 @@ export class UploadElementsComponent implements OnInit {
       private editor: EditorService
     ){}
 
-    async ngOnInit(): Promise<void> {
-      if(this.currentTool == 'uploadElem'){
-        let response = await firstValueFrom(this.api.uploadFile(this.formData as FormData))
-        if(response.success){
-          this.data = response.data
-          console.log(response.data)
-          this.isLoading = false
-        }else{
-          console.log(response.message)
-        }
-      }
+    ngOnInit(): void{
+
     }
+
+    async onSelectFile(e: Event){
+      this.isFileSelected = true
+
+      let target = e.target as HTMLInputElement
+      let file = target.files?.[0];
+
+      let newForm = new FormData()
+      newForm.append('file', file as Blob)
+
+      let response = await firstValueFrom(this.api.uploadFile(newForm as FormData))
+      if(response.success){
+        this.data = response.data
+        console.log(response.data)
+        this.isLoading = false
+      }else{
+        console.log(response.message)
+      }
+      
+
+    };
 
     async getElementSource(src: string): Promise<void>{
       let element: any = {

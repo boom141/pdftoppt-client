@@ -19,12 +19,9 @@
                     <p class="text-sm pointer-events-none">Text</p>
                 </div>
 
-                <input class="hidden" type="file" (change)="onSelectFile($event)" #fileUpload>
-                
                 <div
                     role="button"
                     (click)="selectTool($event)"
-                    (click)="fileUpload.click()"
                     id="uploadElem" [ngClass]="
                     {'flex p-2 rounded-md flex-col items-center justify-center':true,
                     'border border-slate-50': currentTool == 'uploadElem'}">
@@ -41,15 +38,11 @@
                                     <app-elements [currentTool]="currentTool" class="flex flex-col gap-y-5 w-full"></app-elements>
                                 }
                                 @if(currentTool ==  'uploadElem'){
-                                <app-upload-elements [formData]="newForm" [currentTool]="currentTool" class="flex flex-col gap-y-5 w-full"></app-upload-elements> 
+                                <app-upload-elements [currentTool]="currentTool" class="flex flex-col gap-y-5 w-full"></app-upload-elements> 
                                 }
                                 @if(currentTool ==  'text'){
                                     <app-text [currentTool]="currentTool" class="flex flex-col gap-y-5 w-full"></app-text> 
                                 }
-                                <!-- <app-elements class="flex flex-col gap-y-5 w-full" 
-                                        *ngIf="currentTool == 'elements'">
-                                </app-elements>-->
-                        
                         </ng-container>
                     </div>
                </div>

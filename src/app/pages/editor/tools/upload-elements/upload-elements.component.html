@@ -1,3 +1,10 @@
 <ng-container>
-    <app-tool-content (getContentSource)="getElementSource($event)" [isLoading]="isLoading" [loadedData]="data"></app-tool-content>
+    <input class="hidden" type="file" (change)="onSelectFile($event)" #fileUpload>
+    <Button (click)="fileUpload.click()"  class="bg-dark p-2 rounded-md font-medium">
+        Upload File
+    </Button>
+
+    @if(isFileSelected){
+        <app-tool-content (getContentSource)="getElementSource($event)" [isLoading]="isLoading" [loadedData]="data"></app-tool-content>
+    }
 </ng-container>

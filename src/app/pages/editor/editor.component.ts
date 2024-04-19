@@ -29,11 +29,10 @@ import { TextComponent } from './tools/text/text.component';
 
 export class EditorComponent implements OnInit {
     isToolContent: boolean = true;
-    currentTool?: string = 'elements';
+    currentTool?: string = 'uploadElem';
     pickerColor: string = '#FFFFFF'
     entity: string | null = 'canvas';
     canvasColor?: string;
-    newForm?: FormData
 
 
     constructor(
@@ -49,16 +48,6 @@ export class EditorComponent implements OnInit {
       this.editor.initRender();
     }
     
-
-    onSelectFile(e: Event){
-      let target = e.target as HTMLInputElement
-      let file = target.files?.[0];
-
-      this.newForm = new FormData()
-      this.newForm.append('file', file as Blob)
-
-      this.isToolContent = true
-    };
 
     // renderSlides(): any {
     //   return this.editor.slides
@@ -76,8 +65,6 @@ export class EditorComponent implements OnInit {
     selectTool(e: MouseEvent):void {
       let target = e.target as HTMLElement;
       this.currentTool = target.id;
-      
-      this.isToolContent = this.currentTool !== 'uploadElem' ? true : false
     }
     
     canvasEvent():void {

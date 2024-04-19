@@ -16,8 +16,6 @@ export class TextComponent  {
 
     constructor(private editor: EditorService){}
 
-    
-
     addText(textObject: textProps): void{ 
       textObject.properties.selected = true
 
