@@ -7,7 +7,9 @@ import { fabric } from "fabric";
 })
 
 export class EditorService {  
-    canvas?: fabric.Canvas;
+    canvas?: fabric.Canvas
+    canvasHeight: number = 400
+    canvasWidth: number = 800
     slides: presentationSlides[] | undefined;
     slideCount: number = 0;
     currentSlide: number = 0;
@@ -25,7 +27,7 @@ export class EditorService {
     initCanvas(): void {
       this.canvas = new fabric.Canvas('app-canvas',{backgroundColor: 'white'});
       let slidesData = this.getSlidesData()
-      this.slideCount = slidesData ? slidesData.slice(-1)[0].slide + 1 : 0;
+      this.slideCount = slidesData ? slidesData.slice(-1)[0].number + 1 : 0;
       this.slides = slidesData ? slidesData : [this.createSlides()]
       this.saveSlidesData();
     }
@@ -48,7 +50,9 @@ export class EditorService {
 
     createSlides(): presentationSlides{
       return {
-            slide: this.slideCount++,
+            number: this.slideCount++,
+            height: this.canvasHeight,
+            width: this.canvasWidth,
             backgroundColor: '#FFFFFF',
             objects: Array(),
             thumbnail: null
@@ -86,14 +90,14 @@ export class EditorService {
     }
 
     renderText(textProps: any): void{
-      let text = new fabric.Textbox(textProps.text, textProps.properties);
+      let text = new fabric.Textbox(textProps.text, textProps);
       this.canvas?.add(text);
       this.canvas?.renderAll()
     }
 
     renderElem(imgProps: any): void{
-      fabric.Image.fromURL(imgProps.properties.src, (elem) => {
-        elem.set(imgProps.properties);
+      fabric.Image.fromURL(imgProps.src, (elem) => {
+        elem.set(imgProps);
         this.canvas?.add(elem);
         this.canvas?.renderAll()
       });
@@ -111,13 +115,13 @@ export class EditorService {
       let dataObjects = this.slides?.[this.currentSlide].objects
       
       dataObjects?.forEach((object,indx) => {
-        if(object.properties.type === 'text') {
+        if('text' in object) {
           object.text = canvasObjects[indx].text
         }
 
-        for(let key in object.properties) {
+        for(let key in object) {
           let sanitizedObject = Object.assign({},canvasObjects[indx])
-          object.properties[key] = sanitizedObject[key]
+          object[key] = sanitizedObject[key]
         }
       })
       
@@ -140,7 +144,9 @@ export class EditorService {
 }
 
 export interface presentationSlides{
-  slide: number,
+  number: number,
+  height: number,
+  width: number,
   backgroundColor: string,
   objects: any[],
   thumbnail: string | null

@@ -17,17 +17,15 @@ export class TextComponent  {
     constructor(private editor: EditorService){}
 
     addText(textObject: textProps): void{ 
-      textObject.properties.selected = true
-
+      textObject.id = this.editor.createId();
       this.editor.registerObjectToSlide(textObject)
       this.editor.renderText(textObject)
     }
 
     addHeading(): void {
-      let heading: any = {
-        type: 'text',
-        text: 'A Heading',
-        properties: {
+      let textProps: any = {
+          type: 'text',
+          text: 'A Heading',
           width: 300,
           height: 100,
           fontFamily: 'arial',
@@ -38,17 +36,15 @@ export class TextComponent  {
           top: 100,
           fill: '#000000',
           angle: 0
-        }
       }
 
-      this.addText(heading)
+      this.addText(textProps)
     }
 
     addSubheading(): void {
-      let subheading: any = {
-        type: 'text',
-        text: 'A subheading',
-        properties: {
+      let textProps: any = {
+          type: 'text',
+          text: 'A subheading',
           width: 200,
           height: 100,
           fontFamily: 'arial',
@@ -60,16 +56,14 @@ export class TextComponent  {
           fill: '#000000',
           angle: 0
         }
-      }
-
-      this.addText(subheading)
+      
+      this.addText(textProps)
     }
 
     addParagraph(): void {
-      let text: any = {
-        type: 'text',
-        text: 'A little bit of body text',
-        properties: {
+      let textProps: any = {
+          type: 'text',
+          text: 'A little bit of body text',
           fontFamily: 'arial',
           fontWeight: 'normal',
           fontSize: 20,
@@ -77,19 +71,18 @@ export class TextComponent  {
           left: 305,
           top: 210,
           fill: '#000000',
-          angle: 0
-        }
+          angle: 0 
       }
 
-      this.addText(text)
+      this.addText(textProps)
     }
 
 }
 
 interface textProps {
-  type: string,
-  text: string,
-  properties: {
+    id: number,
+    type: string,
+    text: string,
     width: number,
     height: number,
     fontFamily: string,
@@ -98,8 +91,6 @@ interface textProps {
     cursorColor: string,
     left: number,
     top: number
-    fill: string,
-    selected: boolean
+    fill: string
     angle: number
-  }
 }

@@ -1,20 +1,25 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable} from "rxjs";
-import { API_URL } from "../shared/constants/variables.constant";
+import { API_VARIABLES } from "../shared/constants/api.constant";
 
 @Injectable({
     providedIn: "root"
 })
 export class ApiReqService {
+    private apiUrl: string = API_VARIABLES.origin + API_VARIABLES.basePath
 
     constructor(private http: HttpClient){}
     
     getElemets(): Observable<any>{
-        return this.http.get(API_URL.elements)
+        return this.http.get(this.apiUrl + API_VARIABLES.endpoint.elements)
     }
 
     uploadFile(formData: FormData): Observable<any>{
-        return this.http.post(API_URL.upload, formData)
+        return this.http.post(this.apiUrl + API_VARIABLES.endpoint.upload, formData)
+    }
+
+    exportPresentation(data: any): Observable<any>{
+        return this.http.post(this.apiUrl + API_VARIABLES.endpoint.export, data)
     }
 }

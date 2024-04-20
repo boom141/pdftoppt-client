@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EntityAttributesComponent } from './entity-attributes/entity-attributes.component';
 import { UploadElementsComponent } from './tools/upload-elements/upload-elements.component';
 import { TextComponent } from './tools/text/text.component';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-editor',
@@ -48,6 +49,10 @@ export class EditorComponent implements OnInit {
       this.editor.initRender();
     }
     
+    async export(): Promise<void> {
+      let slidesData = this.editor.getSlidesData()
+      console.log(await firstValueFrom(this.api.exportPresentation({data: slidesData})))
+    }
 
     // renderSlides(): any {
     //   return this.editor.slides

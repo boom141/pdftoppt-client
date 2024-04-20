@@ -31,14 +31,13 @@ export class ElementsComponent implements OnInit{
         this.data = response.data
         this.isLoading = false
       }else{
-        console.log(response.message)
+        this.isLoading = false
       }
     }
   }
 
   async getElementSource(src: string): Promise<void>{
-    let element: any = {
-      properties: {
+    let elementProps: any = {
         id: this.editor.createId(),
         src: src,
         type: 'element',
@@ -49,10 +48,9 @@ export class ElementsComponent implements OnInit{
         flipX: false,
         flipY: false,
         angle: 0
-      }
     }
 
-    this.editor.registerObjectToSlide(element)
-    this.editor.renderElem(element)
+    this.editor.registerObjectToSlide(elementProps)
+    this.editor.renderElem(elementProps)
   }
 }
