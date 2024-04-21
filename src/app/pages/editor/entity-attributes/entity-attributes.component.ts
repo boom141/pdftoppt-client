@@ -1,5 +1,5 @@
 import { Component, OnInit , AfterViewInit} from '@angular/core';
-import { EditorService } from '../../../services/editor.service';
+import { EditorService } from '../../../shared/services/editor.service';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { CommonModule } from '@angular/common';
 
@@ -30,9 +30,21 @@ export class EntityAttributesComponent implements OnInit{
     if(this.editor.canvas){
       if(this.editor.slides){
         this.editor.canvas.backgroundColor = this.backgroundColor
-        this.editor.applyEdit()
+        this.editor.updateCanvasData()
       }
     }
+  }
+
+  changeFontFamily(event: Event): void{
+    let target = event.target as HTMLInputElement
+    let objects = this.editor.objectsSelection()
+
+    if(objects){
+      objects.forEach((object: any) =>{
+        object.fontFamily = target.value.toLowerCase()
+      })
+    }
+    this.editor.updateCanvasData()
   }
 
   changeFontSize(event: MouseEvent): void{
@@ -49,21 +61,7 @@ export class EntityAttributesComponent implements OnInit{
         this.fontSize = object.fontSize
       })
     }
-
-    this.editor.applyEdit()
-  }
-
-  changeFontFamily(event: Event): void{
-    let target = event.target as HTMLInputElement
-    let objects = this.editor.objectsSelection()
-
-    if(objects){
-      objects.forEach((object: any) =>{
-        object.fontFamily = target.value.toLowerCase()
-      })
-    }
-
-    this.editor.applyEdit()
+    this.editor.updateCanvasData()
   }
 
   changeFontColor(): void{
@@ -73,7 +71,7 @@ export class EntityAttributesComponent implements OnInit{
         object.fill = this.fontColor
       })
     }
-    this.editor.applyEdit()
+    this.editor.updateCanvasData()
   }
 
   changeFontWeight(): void{
@@ -88,8 +86,7 @@ export class EntityAttributesComponent implements OnInit{
         }
       })
     }
-
-    this.editor.applyEdit()
+    this.editor.updateCanvasData()
   }
 
   changeFontCase(): void{
@@ -105,8 +102,7 @@ export class EntityAttributesComponent implements OnInit{
         }
       })
     }
-
-    this.editor.applyEdit()
+    this.editor.updateCanvasData()
   }
 
   deleteObject(): void{

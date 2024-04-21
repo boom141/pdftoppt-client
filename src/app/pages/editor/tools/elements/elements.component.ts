@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { EditorService } from '../../../../services/editor.service';
-import { ApiReqService } from '../../../../services/apiReq.service';
+import { EditorService } from '../../../../shared/services/editor.service';
+import { ApiReqService } from '../../../../shared/services/apiReq.service';
 import { firstValueFrom } from 'rxjs';
 import { ToolContentComponent } from '../../../../shared/components/tool-content/tool-content.component';
 
+import SlideData from '../../../../shared/types';
 @Component({
   selector: 'app-elements',
   standalone: true,
@@ -37,7 +38,7 @@ export class ElementsComponent implements OnInit{
   }
 
   async getElementSource(src: string): Promise<void>{
-    let elementProps: any = {
+    let elementProps: SlideData.ImageProps = {
         id: this.editor.createId(),
         src: src,
         type: 'element',

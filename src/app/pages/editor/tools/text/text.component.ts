@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { EditorService } from '../../../../services/editor.service';
+import { EditorService } from '../../../../shared/services/editor.service';
 
+import SlideData from '../../../../shared/types';
 
 @Component({
   selector: 'app-text',
@@ -16,7 +17,7 @@ export class TextComponent  {
 
     constructor(private editor: EditorService){}
 
-    addText(textObject: textProps): void{ 
+    addText(textObject: SlideData.TextProps): void{ 
       textObject.id = this.editor.createId();
       this.editor.registerObjectToSlide(textObject)
       this.editor.renderText(textObject)
@@ -79,18 +80,3 @@ export class TextComponent  {
 
 }
 
-interface textProps {
-    id: number,
-    type: string,
-    text: string,
-    width: number,
-    height: number,
-    fontFamily: string,
-    fontWeight: string,
-    fontSize: number,
-    cursorColor: string,
-    left: number,
-    top: number
-    fill: string
-    angle: number
-}

@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable, Output } from "@angular/core";
 import { fabric } from "fabric";
 
+import SlideData from "../types";
 
 @Injectable({
     providedIn: 'root',
@@ -10,18 +11,16 @@ export class EditorService {
     canvas?: fabric.Canvas
     canvasHeight: number = 400
     canvasWidth: number = 800
-    slides: presentationSlides[] | undefined;
+    slides: Array<SlideData.Slide> | undefined;
     slideCount: number = 0;
     currentSlide: number = 0;
-
-    @Output() renderCanvasObjects: EventEmitter<any> = new EventEmitter<any>();
 
     createId(): number{
       return new Date().getTime();
     }
 
-    getCurrentSlide(): presentationSlides{
-      return this.slides?.[this.currentSlide as number] as presentationSlides
+    getCurrentSlide(): SlideData.Slide{
+      return this.slides?.[this.currentSlide as number] as SlideData.Slide;
     }
 
     initCanvas(): void {
@@ -48,7 +47,7 @@ export class EditorService {
       
     }
 
-    createSlides(): presentationSlides{
+    createSlides(): SlideData.Slide{
       return {
             number: this.slideCount++,
             height: this.canvasHeight,
@@ -59,7 +58,7 @@ export class EditorService {
       }
     }
 
-    getSlidesData(): presentationSlides[]{
+    getSlidesData(): Array<SlideData.Slide>{
       return JSON.parse(localStorage.getItem('slidesData') as any);
     }
 
@@ -75,7 +74,7 @@ export class EditorService {
     deleteObjects(activeObjects: fabric.Object[]): void{
       activeObjects.forEach((activeObject: any) => {
         let newSLideObjects = this.getCurrentSlide().objects.filter(slideObject => {
-          return slideObject.properties.id !== activeObject.id
+          return slideObject.id !== activeObject.id
         })
         this.getCurrentSlide().objects = newSLideObjects
         this.canvas?.remove(activeObject)
@@ -110,18 +109,15 @@ export class EditorService {
 
     }
 
-    updateCanvasData(): void{
-      let canvasObjects = this.canvas?.getObjects() as any[]
+    updateCanvasData(): void{ 
       let dataObjects = this.slides?.[this.currentSlide].objects
       
       dataObjects?.forEach((object,indx) => {
-        if('text' in object) {
-          object.text = canvasObjects[indx].text
-        }
-
-        for(let key in object) {
-          let sanitizedObject = Object.assign({},canvasObjects[indx])
-          object[key] = sanitizedObject[key]
+        let sanitizedObject = this.canvas?.getObjects()[indx] as fabric.Object
+        for(const key in object) {
+          if(key in sanitizedObject){
+            (object as any)[key] = (sanitizedObject as any)[key]
+          }
         }
       })
       
@@ -131,23 +127,10 @@ export class EditorService {
         this.slides[this.currentSlide].objects = [...dataObjects as []];
         // this.slides[this.currentSlide].thumbnail = this.canvas?.toDataURL() as string
         this.saveSlidesData()
+        this.canvas?.renderAll()
       }
-
-
     }
 
-    applyEdit(): void{
-      this.updateCanvasData()
-      this.canvas?.renderAll()
-    }
 
 }
 
-export interface presentationSlides{
-  number: number,
-  height: number,
-  width: number,
-  backgroundColor: string,
-  objects: any[],
-  thumbnail: string | null
-}

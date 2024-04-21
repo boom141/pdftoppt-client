@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit, inject } from '@angular/core';
-import { ApiReqService } from '../../services/apiReq.service';
-import { EditorService } from '../../services/editor.service';
+import { ApiReqService } from '../../shared/services/apiReq.service';
+import { EditorService } from '../../shared/services/editor.service';
 import { ElementsComponent } from './tools/elements/elements.component';
 
 import { CommonModule } from '@angular/common';
