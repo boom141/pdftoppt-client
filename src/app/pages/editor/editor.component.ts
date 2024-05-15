@@ -9,6 +9,7 @@ import { EntityAttributesComponent } from './entity-attributes/entity-attributes
 import { UploadElementsComponent } from './tools/upload-elements/upload-elements.component';
 import { TextComponent } from './tools/text/text.component';
 import { firstValueFrom } from 'rxjs';
+import { SlideContainerComponent } from './slide-container/slide-container.component';
 
 @Component({
   selector: 'app-editor',
@@ -20,7 +21,8 @@ import { firstValueFrom } from 'rxjs';
     ElementsComponent,
     UploadElementsComponent,
     EntityAttributesComponent,
-    TextComponent
+    TextComponent,
+    SlideContainerComponent
   ],
   providers: [
     ApiReqService,
@@ -30,7 +32,7 @@ import { firstValueFrom } from 'rxjs';
 
 export class EditorComponent implements OnInit {
     isToolContent: boolean = true;
-    currentTool?: string = 'uploadElem';
+    currentTool?: string = 'uploadElem'
     pickerColor: string = '#FFFFFF'
     entity: string | null = 'canvas';
     canvasColor?: string;
@@ -40,28 +42,34 @@ export class EditorComponent implements OnInit {
       private editor: EditorService,
       private api: ApiReqService
     ){
+''
+    }  
 
-    }
+    async ngOnInit(): Promise<void> {  
+      // let response = await firstValueFrom(this.api.extractImages(3))
+      // console.log(response)
 
-    ngOnInit(): void {  
+      this.editor.loadTemplate(0)
       this.editor.initCanvas();
       this.pickerColor = this.editor.slides?.[0].backgroundColor as string;
+      
       this.editor.initRender();
     }
     
+
     async export(): Promise<void> {
       let slidesData = this.editor.getSlidesData()
       console.log(await firstValueFrom(this.api.exportPresentation({data: slidesData})))
     }
 
-    // renderSlides(): any {
-    //   return this.editor.slides
-    // }
+    renderSlides(): any {
+      return this.editor.slides
+    }
 
-    // addSlides(): void{
-    //   this.editor.slides = [...this.editor.slides as presentationSlides[], this.editor.createSlides()]
-    //   this.editor.saveSlidesData();
-    // }
+    addSlides(): void{
+      this.editor.slides = [...this.editor.slides as any, this.editor.createSlides()]
+      this.editor.saveSlidesData();
+    }
 
     openToolContent(){
       this.isToolContent = !this.isToolContent

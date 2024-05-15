@@ -1,10 +1,38 @@
 <ng-container>
-    <input class="hidden" type="file" (change)="onSelectFile($event)" #fileUpload>
-    <Button (click)="fileUpload.click()"  class="bg-dark p-2 rounded-md font-medium">
-        Upload File
-    </Button>
-
-    @if(isFileSelected){
-        <app-tool-content (getContentSource)="getElementSource($event)" [isLoading]="isLoading" [loadedData]="data"></app-tool-content>
+    @if(isLoading){
+        <app-placeholder></app-placeholder>
+    }@else{
+        @if(isFileSelected){
+            <div class="flex flex-col w-full">
+                <p class="text-2xl font-semibold ">Pages</p>
+                <div class="flex flex-row justify-between space-x-5 mt-5">
+                    <div role="button" (click)="getPageLimit($event)" id="5" [ngClass]="
+                        {
+                            'border-2 border-slate-400 rounded-lg hover:border-white transition flex flex-col justify-center items-center p-5': true, 
+                            'border-white':clickPageOption
+                        }">
+                        <p class="pointer-events-none font-semibold text-md">1 - 5</p>
+                        <p class="pointer-events-none font-light text-xl">Pages</p>
+                    </div>
+                    <div role="button" class="cursor-not-allowed border-2 border-slate-400 rounded-lg hover:border-white transition flex flex-col justify-center items-center p-5">
+                        <p class="font-semibold text-md">5 - 10</p>
+                        <p class="font-light text-xl">Pages</p>
+                    </div>
+                    <div role="button" class="cursor-not-allowed border-2 border-slate-400 rounded-lg hover:border-white transition flex flex-col justify-center items-center p-5">
+                        <p class="font-semibold text-md">10 - 15</p>
+                        <p class="font-light text-xl">Pages</p>
+                    </div>
+                </div>
+            </div>
+            <Button (click)="generatePresentation()" class="bg-dark p-2 rounded-md font-medium">
+                Generate Presentation
+            </Button>
+            <app-tool-content (getContentSource)="getElementSource($event)" [isLoading]="isLoading" [loadedData]="data"></app-tool-content>
+        }@else{        
+            <input class="hidden" type="file" (change)="onSelectFile($event)" #fileUpload>
+            <Button (click)="fileUpload.click()"  class="bg-dark p-2 rounded-md font-medium">
+                Upload File
+            </Button>
+        }
     }
 </ng-container>

@@ -26,15 +26,15 @@ export class ElementsComponent implements OnInit{
   ){}
   
   async ngOnInit(): Promise<void> {
-    if(this.currentTool == 'elements'){
-      let response = await firstValueFrom(this.api.getElemets())
-      if(response.success){
-        this.data = response.data
-        this.isLoading = false
-      }else{
-        this.isLoading = false
-      }
-    }
+    // if(this.currentTool == 'elements'){
+    //   let response = await firstValueFrom(this.api.getElemets())
+    //   if(response.success){
+    //     this.data = response.data
+    //     this.isLoading = false
+    //   }else{
+    //     this.isLoading = false
+    //   }
+    // }
   }
 
   async getElementSource(src: string): Promise<void>{

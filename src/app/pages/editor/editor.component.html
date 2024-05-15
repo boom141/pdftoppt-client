@@ -6,17 +6,22 @@
                     flex p-2 rounded-md flex-col items-center justify-center">
                     <img class="pointer-events-none select-none" width="30" height="30" src="https://img.icons8.com/sf-black/64/FFFFFF/menu.png" alt="text"/>
                 </div>
-               <div role="button" (click)="selectTool($event)" id="elements" [ngClass]="
-                    {'flex p-2 rounded-md flex-col items-center justify-center':true,
-                    'border border-slate-50': currentTool == 'elements'}">
-                   <img class="pointer-events-none select-none" width="30" height="30" src="https://img.icons8.com/fluency-systems-regular/48/FFFFFF/shape--v1.png" alt="text"/>
-                   <p class="text-sm pointer-events-none">Elements</p>
-               </div>
-                <div role="button" (click)="selectTool($event)" id="text" [ngClass]="
-                    {'flex p-2 rounded-md flex-col items-center justify-center':true,
-                     'border border-slate-50': currentTool == 'text'}">
-                    <img class="pointer-events-none select-none" width="30" height="30" src="https://img.icons8.com/ios/50/FFFFFF/text.png" alt="text"/>
-                    <p class="text-sm pointer-events-none">Text</p>
+                <div class="cursor-not-allowed">
+                    <div role="button" (click)="selectTool($event)" id="elements" [ngClass]="
+                        {'flex p-2 pointer-events-none  rounded-md flex-col items-center justify-center':true,
+                        'border border-slate-50': currentTool == 'elements'}">
+                        <img class="pointer-events-none select-none" width="30" height="30" src="https://img.icons8.com/fluency-systems-regular/48/FFFFFF/shape--v1.png" alt="text"/>
+                        <p class="text-sm pointer-events-none">Elements</p>
+                    </div>
+                </div>
+                
+                <div class="cursor-not-allowed">
+                    <div role="button" (click)="selectTool($event)" id="text" [ngClass]="
+                        {'flex p-2  rounded-md flex-col items-center justify-center':true,
+                         'border border-slate-50': currentTool == 'text'}">
+                        <img class="pointer-events-none select-none" width="30" height="30" src="https://img.icons8.com/ios/50/FFFFFF/text.png" alt="text"/>
+                        <p class="text-sm pointer-events-none">Text</p>
+                    </div>
                 </div>
 
                 <div
@@ -57,21 +62,18 @@
                     <button (click)="export()" class="bg-customDark border text-white font-medium p-3 w-32 rounded-md">
                         Export
                     </button>
-                    <!-- <button class="bg-primary text-white font-medium p-3 w-32 rounded-md">
-                        Export
-                    </button> -->
                 </div>
             </div>
             <div (click)="canvasEvent()" class=" bg-transparent flex-grow text-center flex justify-center items-center">
                 <canvas  id="app-canvas" width="800" height="400"></canvas>
             </div>
             <div class="bg-white border  n p-5 text-center flex flex-row justify-start gap-x-5">
-                <!-- <ng-container *ngFor="let slide of renderSlides()">
-                    <app-slides [slideId]="slide.slide" [thumbnail]="slide.thumbnail" role="button"></app-slides>
-                </ng-container>
-               <button (click)="addSlides()"  class="border border-slate-400 rounded-md h-[5rem] w-[9rem] flex justify-center items-center bg-slate-300">
+                @for(slide of renderSlides(); track $index){
+                    <app-slide-container [id]="slide.number"></app-slide-container>
+                }
+               <button (click)="addSlides()" class="border border-slate-400 rounded-md h-[5rem] w-[9rem] flex justify-center items-center bg-slate-300">
                     <img width="50" height="50" src="https://img.icons8.com/ios/50/plus-math--v1.png" alt="plus-math--v1"/>
-               </button> -->
+               </button>
             </div>
         </div>
     </div>

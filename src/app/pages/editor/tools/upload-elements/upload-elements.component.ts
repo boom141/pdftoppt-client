@@ -1,8 +1,10 @@
 import { Component, Input, OnInit} from '@angular/core';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, takeLast } from 'rxjs';
 import { ApiReqService } from '../../../../shared/services/apiReq.service';
 import { EditorService } from '../../../../shared/services/editor.service';
 import { ToolContentComponent } from '../../../../shared/components/tool-content/tool-content.component';
+import { PlaceholderComponent } from '../../../../shared/components/placeholder/placeholder.component';
+import { CommonModule } from '@angular/common';
 
 // create a service file for elements (eg: elements.service)
 // re-create the uplaod feature
@@ -11,7 +13,9 @@ import { ToolContentComponent } from '../../../../shared/components/tool-content
   selector: 'app-upload-elements',
   standalone: true,
   imports: [
-    ToolContentComponent
+    ToolContentComponent,
+    PlaceholderComponent,
+    CommonModule
   ],
   templateUrl: './upload-elements.component.html',
 })
@@ -19,8 +23,10 @@ import { ToolContentComponent } from '../../../../shared/components/tool-content
 export class UploadElementsComponent implements OnInit {
     @Input() currentTool?: string 
 
+    pageLimit: any
+    clickPageOption = false
     isFileSelected: boolean = false
-    isLoading: boolean = true;
+    isLoading: boolean = false;
     data?: Array<any>
 
     constructor(
@@ -29,12 +35,11 @@ export class UploadElementsComponent implements OnInit {
     ){}
 
     ngOnInit(): void{
-
+      
     }
 
     async onSelectFile(e: Event){
-      this.isFileSelected = true
-
+      this.isLoading = true
       let target = e.target as HTMLInputElement
       let file = target.files?.[0];
 
@@ -44,14 +49,31 @@ export class UploadElementsComponent implements OnInit {
       let response = await firstValueFrom(this.api.uploadFile(newForm as FormData))
       if(response.success){
         this.data = response.data
-        console.log(response.data)
+        this.isFileSelected = true
         this.isLoading = false
       }else{
+        
         this.isLoading = false
       }
-      
-
     };
+
+    getPageLimit(event: Event): void{
+      let target = (event.target as HTMLInputElement)
+      this.pageLimit = target.id
+    }
+
+    async generatePresentation(){
+      // this.isLoading = true
+      // let params = 'pageLimit=' + 3
+      // let response = await firstValueFrom(this.api.extractContent(params))
+      // if(response.success){
+      //   this.data = response.data
+      //   console.log(response.data)
+      //   this.isLoading = false
+      // }else{
+      //   this.isLoading = false
+      // }
+    }
 
     async getElementSource(src: string): Promise<void>{
       let elementProps: any = {

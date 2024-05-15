@@ -1,7 +1,8 @@
-import { EventEmitter, Injectable, Output } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { fabric } from "fabric";
 
 import SlideData from "../types";
+import { SAMPLE_IMAGE_DATA, SAMPLE_TEMPLATES, SAMPLE_TEXT_DATA } from "../../../assets/data/00-sample-data";
 
 @Injectable({
     providedIn: 'root',
@@ -14,6 +15,27 @@ export class EditorService {
     slides: Array<SlideData.Slide> | undefined;
     slideCount: number = 0;
     currentSlide: number = 0;
+
+    imagesFromUpload: any
+    textsFromUpload: any
+
+    loadTemplate(templateId: any): void{
+      let imagesFromUpload = SAMPLE_IMAGE_DATA
+      let textsFromUpload = SAMPLE_TEXT_DATA
+
+      let templateData = (SAMPLE_TEMPLATES as any)[`${templateId}`]
+      templateData.forEach((slide:any) =>{
+        slide.objects.forEach((obj:any, indx: number) => {
+          if(obj.type !== 'text'){
+            obj.src = imagesFromUpload.data[indx].url
+          }
+        })
+      })
+      
+      this.slides = templateData
+      this.saveSlidesData()
+
+    }
 
     createId(): number{
       return new Date().getTime();
@@ -111,20 +133,23 @@ export class EditorService {
 
     updateCanvasData(): void{ 
       let dataObjects = this.slides?.[this.currentSlide].objects
-      
-      dataObjects?.forEach((object,indx) => {
-        let sanitizedObject = this.canvas?.getObjects()[indx] as fabric.Object
-        for(const key in object) {
-          if(key in sanitizedObject){
-            (object as any)[key] = (sanitizedObject as any)[key]
+
+      this.canvas?.getObjects().forEach((canvasObj:any) => {
+        let canvasObjects = Object.assign({}, canvasObj )
+        let entityObject = dataObjects?.find(dataObj => dataObj.id === canvasObjects.id)
+        for(const key in entityObject) {
+          if(key in canvasObjects){
+            (entityObject as any)[key] = (canvasObjects as any)[key]
           }
         }
       })
-      
+
+      console.log(this.slides)
 
       if (this.slides && this.slides[this.currentSlide]) {
         this.slides[this.currentSlide].backgroundColor = this.canvas?.backgroundColor as string
         this.slides[this.currentSlide].objects = [...dataObjects as []];
+        
         // this.slides[this.currentSlide].thumbnail = this.canvas?.toDataURL() as string
         this.saveSlidesData()
         this.canvas?.renderAll()

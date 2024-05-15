@@ -4,7 +4,8 @@ export const API_VARIABLES = {
     basePath: "/v1/api/",
     endpoint: {
         elements: "elements",
-        upload: "upload",
+        info: "fileInfo",
+        extractImages: "extractImages?pageLimit=",
         export: "export"
     }
 
