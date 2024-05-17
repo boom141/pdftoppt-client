@@ -48,11 +48,11 @@ export class EditorComponent implements OnInit {
     async ngOnInit(): Promise<void> {  
       // let response = await firstValueFrom(this.api.extractImages(3))
       // console.log(response)
-
-      this.editor.loadTemplate(0)
+      if(this.editor.withTemplate !== null){
+        this.editor.loadTemplate(this.editor.withTemplate)
+      }
       this.editor.initCanvas();
       this.pickerColor = this.editor.slides?.[0].backgroundColor as string;
-      
       this.editor.initRender();
     }
     

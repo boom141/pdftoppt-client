@@ -32,6 +32,9 @@ export class TextComponent  {
           fontFamily: 'arial',
           fontWeight: 'normal',
           fontSize: 60,
+          scaleX: 1,
+          scaleY: 1,
+          textAlign: 'left',
           cursorColor: 'blue',
           left: 250,
           top: 100,
@@ -50,10 +53,13 @@ export class TextComponent  {
           height: 100,
           fontFamily: 'arial',
           fontWeight: 'normal',
-          fontSize: 30,
+          fontSize: 30,        
+          scaleX: 1,
+          scaleY: 1,
           cursorColor: 'blue',
           left: 300,
           top: 170,
+          textAlign: 'left',
           fill: '#000000',
           angle: 0
         }
@@ -65,12 +71,15 @@ export class TextComponent  {
       let textProps: any = {
           type: 'text',
           text: 'A little bit of body text',
+          width: 200,
           fontFamily: 'arial',
           fontWeight: 'normal',
-          fontSize: 20,
+          scaleX: 0.5,
+          scaleY: 0.5,
           cursorColor: 'blue',
           left: 305,
           top: 210,
+          textAlign: 'left',
           fill: '#000000',
           angle: 0 
       }

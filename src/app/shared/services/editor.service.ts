@@ -15,22 +15,23 @@ export class EditorService {
     slides: Array<SlideData.Slide> | undefined;
     slideCount: number = 0;
     currentSlide: number = 0;
+    withTemplate: number | null = 0;
 
     imagesFromUpload: any
     textsFromUpload: any
 
     loadTemplate(templateId: any): void{
-      let imagesFromUpload = SAMPLE_IMAGE_DATA
-      let textsFromUpload = SAMPLE_TEXT_DATA
+      this.imagesFromUpload = SAMPLE_IMAGE_DATA
+      this.textsFromUpload = SAMPLE_TEXT_DATA
 
       let templateData = (SAMPLE_TEMPLATES as any)[`${templateId}`]
-      templateData.forEach((slide:any) =>{
-        slide.objects.forEach((obj:any, indx: number) => {
-          if(obj.type !== 'text'){
-            obj.src = imagesFromUpload.data[indx].url
-          }
-        })
-      })
+      // templateData.forEach((slide:any) =>{
+      //   slide.objects.forEach((obj:any, indx: number) => {
+      //     if(obj.type !== 'text'){
+      //       obj.src = this.imagesFromUpload.data[indx].url
+      //     }
+      //   })
+      // })
       
       this.slides = templateData
       this.saveSlidesData()
@@ -143,8 +144,6 @@ export class EditorService {
           }
         }
       })
-
-      console.log(this.slides)
 
       if (this.slides && this.slides[this.currentSlide]) {
         this.slides[this.currentSlide].backgroundColor = this.canvas?.backgroundColor as string

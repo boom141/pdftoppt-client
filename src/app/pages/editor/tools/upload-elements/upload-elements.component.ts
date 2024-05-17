@@ -1,9 +1,10 @@
 import { Component, Input, OnInit} from '@angular/core';
-import { firstValueFrom, takeLast } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { ApiReqService } from '../../../../shared/services/apiReq.service';
 import { EditorService } from '../../../../shared/services/editor.service';
 import { ToolContentComponent } from '../../../../shared/components/tool-content/tool-content.component';
 import { PlaceholderComponent } from '../../../../shared/components/placeholder/placeholder.component';
+import {MatTabsModule} from '@angular/material/tabs';
 import { CommonModule } from '@angular/common';
 
 // create a service file for elements (eg: elements.service)
@@ -15,7 +16,8 @@ import { CommonModule } from '@angular/common';
   imports: [
     ToolContentComponent,
     PlaceholderComponent,
-    CommonModule
+    CommonModule,
+    MatTabsModule
   ],
   templateUrl: './upload-elements.component.html',
 })
@@ -35,7 +37,8 @@ export class UploadElementsComponent implements OnInit {
     ){}
 
     ngOnInit(): void{
-      
+      console.log(this.editor.imagesFromUpload)
+      this.data = this.editor.imagesFromUpload.data
     }
 
     async onSelectFile(e: Event){
@@ -75,15 +78,15 @@ export class UploadElementsComponent implements OnInit {
       // }
     }
 
-    async getElementSource(src: string): Promise<void>{
+    getElementSource(src: string): void{
       let elementProps: any = {
           id: this.editor.createId(),
           src: src,
-          type: 'elementProps',
+          type: 'image',
           left: 100,
           top: 100,
-          scaleX: 0.2,
-          scaleY: 0.2,
+          scaleX: 1,
+          scaleY: 1,
           flipX: false,
           flipY: false,
           angle: 0

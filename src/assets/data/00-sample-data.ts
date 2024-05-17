@@ -1,42 +1,245 @@
 export const SAMPLE_TEMPLATES = {
         0: [
             {
-                "number": 0,
-                "height": 400,
-                "width": 800,
-                "backgroundColor": "#FFFFFF",
-                "objects": [
-                    {
-                        "id": 1715671305361,
-                        "src": "https://placehold.co/600x400/000000/FFFFFF/png",
-                        "type": "image",
-                        "left": 474,
-                        "top": 85,
-                        "scaleX": 1,
-                        "scaleY": 1,
-                        "flipX": false,
-                        "flipY": false,
-                        "angle": 0
-                    },
-                    {
-                        "type": "text",
-                        "text": "A Heading",
-                        "width": 600,
-                        "height": 400,
-                        "fontFamily": "arial",
-                        "fontWeight": "normal",
-                        "fontSize": 60,
-                        "cursorColor": "blue",
-                        "left": 50.000000000000114,
-                        "top": 51.99999999999994,
-                        "fill": "rgb(0,0,0)",
-                        "angle": 0,
-                        "id": 1715671294646
-                    }
-                ],
-                "thumbnail": null
+              "number": 0,
+              "height": 400,
+              "width": 800,
+              "backgroundColor": "#fcffd3",
+              "objects": [
+                {
+                  "type": "text",
+                  "text": "A Heading",
+                  "width": 300,
+                  "height": 67.79999999999998,
+                  "fontFamily": "arial",
+                  "fontWeight": "bold",
+                  "fontSize": 60,
+                  "cursorColor": "blue",
+                  "left": 407,
+                  "top": 128,
+                  "fill": "#000000",
+                  "angle": 0,
+                  "id": 1715960233329
+                },
+                {
+                  "type": "text",
+                  "text": "A subheading",
+                  "width": 200,
+                  "height": 33.89999999999999,
+                  "fontFamily": "arial",
+                  "fontWeight": "normal",
+                  "fontSize": 30,
+                  "cursorColor": "blue",
+                  "left": 420,
+                  "top": 197,
+                  "fill": "#000000",
+                  "angle": 0,
+                  "id": 1715960246649
+                },
+                {
+                  "type": "text",
+                  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+                  "width": 833.3039545177322,
+                  "fontFamily": "arial",
+                  "fontWeight": "normal",
+                  "scaleX": 0.3337958222581706,
+                  "scaleY": 0.3337958222581706,
+                  "cursorColor": "blue",
+                  "left": 418.9999999999995,
+                  "top": 246.69766839490245,
+                  "fill": "#000000",
+                  "angle": 0,
+                  "id": 1715960708977
+                },
+                {
+                  "id": 1715972634335,
+                  "src": "https://placehold.co/600x400/000000/FFFFFF/png",
+                  "type": "element",
+                  "left": 56,
+                  "top": 114.79375000000002,
+                  "scaleX": 0.497721875,
+                  "scaleY": 0.497721875,
+                  "flipX": false,
+                  "flipY": false,
+                  "angle": 0
+                }
+              ],
+              "thumbnail": null
+            },
+            {
+              "number": 1,
+              "height": 400,
+              "width": 800,
+              "backgroundColor": "#e5ffd3",
+              "objects": [
+                {
+                  "type": "text",
+                  "text": "A Heading",
+                  "width": 333.109375,
+                  "height": 67.79999999999998,
+                  "fontFamily": "arial",
+                  "fontWeight": "bold",
+                  "fontSize": 60,
+                  "scaleX": 1,
+                  "scaleY": 1,
+                  "cursorColor": "blue",
+                  "left": 45,
+                  "top": 80,
+                  "fill": "#000000",
+                  "angle": 0,
+                  "id": 1715962086521
+                },
+                {
+                  "type": "text",
+                  "text": "A little bit of body Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                  "width": 781.21875,
+                  "fontFamily": "arial",
+                  "fontWeight": "normal",
+                  "scaleX": 0.46019285032971036,
+                  "scaleY": 0.46019285032971036,
+                  "cursorColor": "blue",
+                  "left": 47,
+                  "top": 163.36210114384312,
+                  "fill": "#000000",
+                  "angle": 0,
+                  "id": 1715962098746
+                },
+                {
+                  "id": 1715972654565,
+                  "src": "https://placehold.co/600x400/000000/FFFFFF/png",
+                  "type": "element",
+                  "left": 412.109375,
+                  "top": 79.40625,
+                  "scaleX": 0.591484375,
+                  "scaleY": 0.591484375,
+                  "flipX": false,
+                  "flipY": false,
+                  "angle": 0
+                }
+              ],
+              "thumbnail": null
+            },
+            {
+              "number": 2,
+              "height": 400,
+              "width": 800,
+              "backgroundColor": "#ffd3d3",
+              "objects": [
+                {
+                  "type": "text",
+                  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                  "width": 907.21875,
+                  "fontFamily": "arial",
+                  "fontWeight": "normal",
+                  "scaleX": 0.5,
+                  "scaleY": 0.5,
+                  "cursorColor": "blue",
+                  "left": 268,
+                  "top": 63,
+                  "textAlign": "left",
+                  "fill": "#000000",
+                  "angle": 0,
+                  "id": 1715962368792
+                },
+                {
+                  "type": "text",
+                  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                  "width": 1031.7454335983048,
+                  "fontFamily": "arial",
+                  "fontWeight": "normal",
+                  "scaleX": 0.4718030062141568,
+                  "scaleY": 0.4718030062141568,
+                  "cursorColor": "blue",
+                  "left": 267.257216947447,
+                  "top": 233.35215805255314,
+                  "textAlign": "left",
+                  "fill": "#000000",
+                  "angle": 0,
+                  "id": 1715962465865
+                },
+                {
+                  "id": 1715972664229,
+                  "src": "https://placehold.co/600x400/000000/FFFFFF/png",
+                  "type": "element",
+                  "left": 39.00000000000004,
+                  "top": 62.59375,
+                  "scaleX": 0.32851562500000003,
+                  "scaleY": 0.32851562500000003,
+                  "flipX": false,
+                  "flipY": false,
+                  "angle": 0
+                },
+                {
+                  "id": 1715972674239,
+                  "src": "https://placehold.co/600x400/000000/FFFFFF/png",
+                  "type": "element",
+                  "left": 40,
+                  "top": 224.99374999999986,
+                  "scaleX": 0.32852187500000013,
+                  "scaleY": 0.32852187500000013,
+                  "flipX": false,
+                  "flipY": false,
+                  "angle": 0
+                }
+              ],
+              "thumbnail": null
+            },
+            {
+              "number": 3,
+              "height": 400,
+              "width": 800,
+              "backgroundColor": "#d3f6ff",
+              "objects": [
+                {
+                  "type": "text",
+                  "text": "A Heading",
+                  "width": 300,
+                  "height": 67.79999999999998,
+                  "fontFamily": "arial",
+                  "fontWeight": "bold",
+                  "fontSize": 60,
+                  "scaleX": 1,
+                  "scaleY": 1,
+                  "textAlign": "left",
+                  "cursorColor": "blue",
+                  "left": 53,
+                  "top": 63,
+                  "fill": "#000000",
+                  "angle": 0,
+                  "id": 1715972394501
+                },
+                {
+                  "type": "text",
+                  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                  "width": 681.03125,
+                  "fontFamily": "arial",
+                  "fontWeight": "normal",
+                  "scaleX": 0.47650608576285586,
+                  "scaleY": 0.47650608576285586,
+                  "cursorColor": "blue",
+                  "left": 57.999999999999915,
+                  "top": 149.47641630544766,
+                  "textAlign": "left",
+                  "fill": "#000000",
+                  "angle": 0,
+                  "id": 1715972411462
+                },
+                {
+                  "id": 1715972705003,
+                  "src": "https://placehold.co/600x400/000000/FFFFFF/png",
+                  "type": "element",
+                  "left": 431.9999999999998,
+                  "top": 92.99374999999996,
+                  "scaleX": 0.5275156250000002,
+                  "scaleY": 0.5275156250000002,
+                  "flipX": false,
+                  "flipY": false,
+                  "angle": 0
+                }
+              ],
+              "thumbnail": null
             }
-        ]
+          ]
     }
 
 

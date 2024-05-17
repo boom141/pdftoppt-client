@@ -6,9 +6,9 @@
                     flex p-2 rounded-md flex-col items-center justify-center">
                     <img class="pointer-events-none select-none" width="30" height="30" src="https://img.icons8.com/sf-black/64/FFFFFF/menu.png" alt="text"/>
                 </div>
-                <div class="cursor-not-allowed">
+                <div>
                     <div role="button" (click)="selectTool($event)" id="elements" [ngClass]="
-                        {'flex p-2 pointer-events-none  rounded-md flex-col items-center justify-center':true,
+                        {'flex p-2 rounded-md flex-col items-center justify-center':true,
                         'border border-slate-50': currentTool == 'elements'}">
                         <img class="pointer-events-none select-none" width="30" height="30" src="https://img.icons8.com/fluency-systems-regular/48/FFFFFF/shape--v1.png" alt="text"/>
                         <p class="text-sm pointer-events-none">Elements</p>
@@ -36,7 +36,7 @@
            </div>
            @if(isToolContent){
                <div class="w-[20rem] ">
-                    <input type="text" placeholder="Search" class="w-full p-2 rounded-md text-black mb-5 outline-none">
+                    <!-- <input type="text" placeholder="Search" class="w-full p-2 rounded-md text-black mb-5 outline-none"> -->
                     <div class="overflow-y-auto h-full">
                         <ng-container >
                                 @if(currentTool == 'elements'){

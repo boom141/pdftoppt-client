@@ -1,5 +1,5 @@
 <ng-container>
-    @if(isLoading){
+    <!-- @if(isLoading){
         <app-placeholder></app-placeholder>
     }@else{
         @if(isFileSelected){
@@ -34,5 +34,23 @@
                 Upload File
             </Button>
         }
-    }
+    } -->
+
 </ng-container>
+<mat-tab-group>
+    <mat-tab label="Images">
+        <div class="flex flex-col flex-wrap space-x-5 space-y-5 justify-start">
+
+        </div>
+        @for(image of data; track data){
+            <section class="flex flex-col gap-y-3 justify-start">
+                <div class="h-[5rem] w-[5rem] max-w-xs max-h-xs">
+                    <img (click)="getElementSource(img.src)" [src]="image.url" alt="Your Image" class="cursor-pointer w-full aspect-w-16 aspect-h-9 object-cover" #img>
+                </div>
+            </section>
+        }@empty {
+            <p class="p-2">No content found....</p>
+        }
+    </mat-tab>
+    <mat-tab label="Texts"> Content 2 </mat-tab>
+</mat-tab-group>

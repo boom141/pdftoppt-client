@@ -68,9 +68,11 @@ export class EntityAttributesComponent implements OnInit{
     let objects = this.editor.objectsSelection()
     if(objects){
       objects.forEach((object: any) =>{
+        object.set('fill', this.fontColor) 
         object.fill = this.fontColor
       })
     }
+    console.log('hello world')
     this.editor.updateCanvasData()
   }
 

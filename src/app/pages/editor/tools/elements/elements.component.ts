@@ -41,11 +41,11 @@ export class ElementsComponent implements OnInit{
     let elementProps: SlideData.ImageProps = {
         id: this.editor.createId(),
         src: src,
-        type: 'element',
+        type: 'image',
         left: 100,
         top: 100,
-        scaleX: 0.2,
-        scaleY: 0.2,
+        scaleX: 1,
+        scaleY: 1,
         flipX: false,
         flipY: false,
         angle: 0
