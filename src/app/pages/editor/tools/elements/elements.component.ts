@@ -37,15 +37,17 @@ export class ElementsComponent implements OnInit{
     // }
   }
 
-  async getElementSource(src: string): Promise<void>{
+  getElementSource(src: string, w: any, h: any): void{
+    console.log(w)
+
     let elementProps: SlideData.ImageProps = {
         id: this.editor.createId(),
         src: src,
         type: 'image',
         left: 100,
         top: 100,
-        scaleX: 1,
-        scaleY: 1,
+        scaleX: 0.5,
+        scaleY: 0.5 ,
         flipX: false,
         flipY: false,
         angle: 0

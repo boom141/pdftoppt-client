@@ -20,6 +20,7 @@ export class EntityAttributesComponent implements OnInit{
   isUppercase: boolean = false
   fontFamily: string = 'Arial'
   fontSize: number = 0
+  textAlign: string = 'left'
 
   constructor(private editor: EditorService){}
 
@@ -47,21 +48,15 @@ export class EntityAttributesComponent implements OnInit{
     this.editor.updateCanvasData()
   }
 
-  changeFontSize(event: MouseEvent): void{
+  changeAlign(alignType:string): void{
     let objects = this.editor.objectsSelection()
-    let target = event.target as HTMLInputElement
-
     if(objects){
       objects.forEach((object: any) =>{
-        if(target.innerText === "+"){
-          object.fontSize = object.fontSize + 1
-        }else{
-          object.fontSize = object.fontSize - 1
-        }
-        this.fontSize = object.fontSize
+        object.textAlign = alignType
       })
     }
     this.editor.updateCanvasData()
+    this.textAlign = alignType
   }
 
   changeFontColor(): void{
@@ -72,7 +67,6 @@ export class EntityAttributesComponent implements OnInit{
         object.fill = this.fontColor
       })
     }
-    console.log('hello world')
     this.editor.updateCanvasData()
   }
 

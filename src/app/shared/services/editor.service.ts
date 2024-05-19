@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { fabric } from "fabric";
 
 import SlideData from "../types";
@@ -15,27 +15,44 @@ export class EditorService {
     slides: Array<SlideData.Slide> | undefined;
     slideCount: number = 0;
     currentSlide: number = 0;
-    withTemplate: number | null = 0;
+    withTemplate: number | null = null
+    pageLimit: number = 5
+    currentThumbnail: string = ''
 
     imagesFromUpload: any
     textsFromUpload: any
 
-    loadTemplate(templateId: any): void{
-      this.imagesFromUpload = SAMPLE_IMAGE_DATA
-      this.textsFromUpload = SAMPLE_TEXT_DATA
+    setData = new EventEmitter()
+    showLoading = new EventEmitter()
 
-      let templateData = (SAMPLE_TEMPLATES as any)[`${templateId}`]
-      // templateData.forEach((slide:any) =>{
-      //   slide.objects.forEach((obj:any, indx: number) => {
-      //     if(obj.type !== 'text'){
-      //       obj.src = this.imagesFromUpload.data[indx].url
-      //     }
-      //   })
-      // })
+    organizedPerPage(data:any){
+      let imageStorage:any = Array.from({ length: 5 }, () => [])
+      data.forEach( (obj:any) => {
+        imageStorage[obj.page-1] = [...imageStorage[obj.page-1], obj]
+      })
+      return imageStorage
+    }
+
+    loadTemplate(templateId:any): void{
+      let template = (SAMPLE_TEMPLATES as any)[templateId]
+
+      template.forEach((slide:any, index:number) =>{
+          slide.objects.map((obj:any) =>  {
+            if(obj.type === 'text' && obj.textType === 'body'){
+              obj.text = this.textsFromUpload.data[index].text
+            }
+            
+            if(obj.type === 'image'){
+              console.log(this.imagesFromUpload[index][0].url)
+              obj.src = this.imagesFromUpload[index][0].url
+            }
+
+          })
+      })  
       
-      this.slides = templateData
+      this.slides = template
       this.saveSlidesData()
-
+      this.initRender()
     }
 
     createId(): number{
@@ -149,7 +166,7 @@ export class EditorService {
         this.slides[this.currentSlide].backgroundColor = this.canvas?.backgroundColor as string
         this.slides[this.currentSlide].objects = [...dataObjects as []];
         
-        // this.slides[this.currentSlide].thumbnail = this.canvas?.toDataURL() as string
+        this.slides[this.currentSlide].thumbnail = this.currentThumbnail
         this.saveSlidesData()
         this.canvas?.renderAll()
       }

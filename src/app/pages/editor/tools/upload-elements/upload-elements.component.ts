@@ -29,7 +29,8 @@ export class UploadElementsComponent implements OnInit {
     clickPageOption = false
     isFileSelected: boolean = false
     isLoading: boolean = false;
-    data?: Array<any>
+    imageData?: Array<any>
+    textData?: Array<any>
 
     constructor(
       private api: ApiReqService,
@@ -37,45 +38,57 @@ export class UploadElementsComponent implements OnInit {
     ){}
 
     ngOnInit(): void{
-      console.log(this.editor.imagesFromUpload)
-      this.data = this.editor.imagesFromUpload.data
+      this.editor.setData.subscribe((res:any) =>{
+        this.imageData = this.editor.imagesFromUpload
+        this.textData = this.editor.textsFromUpload.data
+      })
+      if(this.editor.imagesFromUpload){
+        this.imageData = this.editor.imagesFromUpload
+      }
+      if(this.editor.textsFromUpload){
+        this.textData = this.editor.textsFromUpload.data
+      }
     }
 
-    async onSelectFile(e: Event){
-      this.isLoading = true
-      let target = e.target as HTMLInputElement
-      let file = target.files?.[0];
+    // async onSelectFile(e: Event){
+    //   this.isLoading = true
+    //   let target = e.target as HTMLInputElement
+    //   let file = target.files?.[0];
 
-      let newForm = new FormData()
-      newForm.append('file', file as Blob)
+    //   let newForm = new FormData()
+    //   newForm.append('file', file as Blob)
 
-      let response = await firstValueFrom(this.api.uploadFile(newForm as FormData))
-      if(response.success){
-        this.data = response.data
-        this.isFileSelected = true
-        this.isLoading = false
-      }else{
+    //   let response = await firstValueFrom(this.api.uploadFile(newForm as FormData))
+    //   if(response.success){
+    //     this.data = response.data
+    //     this.isFileSelected = true
+    //     this.isLoading = false
+    //   }else{
         
-        this.isLoading = false
-      }
-    };
+    //     this.isLoading = false
+    //   }
+    // };
 
     getPageLimit(event: Event): void{
       let target = (event.target as HTMLInputElement)
       this.pageLimit = target.id
     }
 
-    async generatePresentation(){
-      // this.isLoading = true
-      // let params = 'pageLimit=' + 3
-      // let response = await firstValueFrom(this.api.extractContent(params))
-      // if(response.success){
-      //   this.data = response.data
-      //   console.log(response.data)
-      //   this.isLoading = false
-      // }else{
-      //   this.isLoading = false
-      // }
+    // async generatePresentation(){
+    //   // this.isLoading = true
+    //   // let params = 'pageLimit=' + 3
+    //   // let response = await firstValueFrom(this.api.extractContent(params))
+    //   // if(response.success){
+    //   //   this.data = response.data
+    //   //   console.log(response.data)
+    //   //   this.isLoading = false
+    //   // }else{
+    //   //   this.isLoading = false
+    //   // }
+    // }
+
+    selectedTempalate(id:any){
+      this.editor.loadTemplate(id)
     }
 
     getElementSource(src: string): void{

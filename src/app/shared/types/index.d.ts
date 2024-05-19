@@ -6,6 +6,7 @@ declare namespace SlideData{
 
     export interface TextProps extends SlideObject {
         text: string,
+        textType: string,
         fontFamily: string,
         fontWeight: string,
         fontSize: number,
@@ -35,7 +36,7 @@ declare namespace SlideData{
         width: number,
         backgroundColor: string,
         objects: Array<ObjectsType>,
-        thumbnail: string | null
+        thumbnail: string | null | any
     }
 }
 

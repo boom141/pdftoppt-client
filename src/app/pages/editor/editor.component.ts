@@ -11,6 +11,17 @@ import { TextComponent } from './tools/text/text.component';
 import { firstValueFrom } from 'rxjs';
 import { SlideContainerComponent } from './slide-container/slide-container.component';
 
+
+import {
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogTitle,
+} from '@angular/material/dialog';
+import { SAMPLE_IMAGE_DATA, SAMPLE_TEXT_DATA } from '../../../assets/data/00-sample-data';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-editor',
   standalone: true,
@@ -22,11 +33,12 @@ import { SlideContainerComponent } from './slide-container/slide-container.compo
     UploadElementsComponent,
     EntityAttributesComponent,
     TextComponent,
-    SlideContainerComponent
+    SlideContainerComponent,
   ],
   providers: [
     ApiReqService,
-    EditorService
+    EditorService,
+    Router
   ]
 })
 
@@ -36,30 +48,65 @@ export class EditorComponent implements OnInit {
     pickerColor: string = '#FFFFFF'
     entity: string | null = 'canvas';
     canvasColor?: string;
-
+    grid: number = 20
+    activeSlide: number | null = 0
 
     constructor(
       private editor: EditorService,
-      private api: ApiReqService
+      private api: ApiReqService,
+      public dialog: MatDialog,
+      private router: Router
     ){
-''
     }  
+    
 
     async ngOnInit(): Promise<void> {  
-      // let response = await firstValueFrom(this.api.extractImages(3))
-      // console.log(response)
-      if(this.editor.withTemplate !== null){
-        this.editor.loadTemplate(this.editor.withTemplate)
-      }
+      this.dialog.open(DialogDialog, {
+        disableClose: true
+      })
+
+      let response = await firstValueFrom(this.api.extractImages())
+      this.editor.imagesFromUpload = this.editor.organizedPerPage(response.data)
+      this.editor.textsFromUpload = SAMPLE_TEXT_DATA
+      console.log(this.editor.textsFromUpload.data)
+      this.editor.setData.emit(true)
+      this.dialog.closeAll()
+
+      // let response = SAMPLE_IMAGE_DATA
+      // this.editor.imagesFromUpload = this.editor.organizedPerPage(response.data)
+      // this.editor.textsFromUpload = SAMPLE_TEXT_DATA
+
       this.editor.initCanvas();
       this.pickerColor = this.editor.slides?.[0].backgroundColor as string;
       this.editor.initRender();
     }
     
-
     async export(): Promise<void> {
+      this.dialog.open(DialogDialog, {
+        disableClose: true
+      })
+
       let slidesData = this.editor.getSlidesData()
-      console.log(await firstValueFrom(this.api.exportPresentation({data: slidesData})))
+      let response = await firstValueFrom(this.api.exportPresentation({data: slidesData}))
+      console.log(response)
+      this.dialog.closeAll()
+      // const blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' });
+
+      // // Create a temporary URL for the Blob
+      // const url = window.URL.createObjectURL(blob);
+
+      // // Create an anchor element for downloading the file
+      // const a = document.createElement('a');
+      // a.href = url;
+      // a.download = 'file.pptx'; // Specify the filename
+
+      // // Trigger the download by clicking on the anchor element
+      // document.body.appendChild(a);
+      // a.click();
+
+      // // Cleanup
+      // window.URL.revokeObjectURL(url);
+      // document.body.removeChild(a);
     }
 
     renderSlides(): any {
@@ -80,8 +127,44 @@ export class EditorComponent implements OnInit {
       this.currentTool = target.id;
     }
     
+    selectActiveSlide(data:any){
+      this.activeSlide = this.editor.currentSlide
+    }
+
+    back(){
+      this.router.navigate([''])
+    }
+
+    removeSlide(){
+      this.editor.slides = this.editor.slides?.filter((slide: any) => slide.number !== this.activeSlide)
+      this.editor.slides = this.editor.slides?.map((slide:any,index) => {
+        slide.number = index
+        return slide
+      })
+      this.editor.slideCount--
+      this.editor.saveSlidesData()
+      this.editor.clearCanvas()
+      this.editor.initRender()
+    }
+
     canvasEvent():void {
+      this.editor.canvas?.on('object:moving', (options:any) => {
+        let obj = options.target;
+        obj.set({
+          left: Math.round(obj.left / this.grid) * this.grid,
+          top: Math.round(obj.top / this.grid) * this.grid
+        });
+      });
       this.editor.updateCanvasData()
     }
 
 } 
+
+
+@Component({
+  selector: 'dialog-dialog',
+  templateUrl: './dialog-dialog.html',
+  standalone: true,
+  imports: [],
+})
+export class DialogDialog {}

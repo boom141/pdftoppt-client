@@ -1,0 +1,67 @@
+<div class="bg-customDark h-screen">
+    
+    <nav class="sticky top-0 flex items-center justify-between flex-wrap
+    backdrop-filter backdrop-blur-lg bg-opacity-30 px-8 py-2 shadow-md">
+        <div class="flex items-center">
+            <a routerLink=""><img src="../../../assets/logoNav.png" alt=""></a>
+        </div>
+        <div class="flex flex-row gap-x-[3rem]">
+            <!-- <a routerLink="/contactus" class="text-[1.3rem] text-white font-normal">
+                Contact Us
+            </a> -->
+        </div>
+    </nav>
+
+    <input class="hidden" (change)="onSelectFile($event)" type="file" name="" id="" #upload>
+
+    <div class="flex flex-col ml-[4.5rem] mt-[5rem]">
+        <div class='flex flex-col justify-center items-center'>
+            <p class="text-white text-5xl font-bold">Pdf To PowerPoint Converter</p>
+            <p class='text-[1.5rem] text-white'>Generate ppt from pdf completely free</p>
+            <div class='rounded-xl shadow-custom p-28 mt-[3rem]'>
+                <p (click)="upload.click()" class='
+                bg-dark px-10 py-2 text-2xl font-medium text-white
+                rounded-full text-center cursor-pointer
+                '>Upload file
+                </p>
+                <p class='text-white text-[0.8rem] mt-2 text-center'>Click to upload</p>
+            </div>
+        </div>
+    
+        <div class='flex flex-col justify-center items-center mt-[5rem]'>
+            <h1 class='text-[3rem] text-white font-extrabold'>Generate with 3-easy step!</h1>
+            <div class='flex flex-row justify-between w-[40%] mt-[4rem]'>
+                <div class='flex flex-col justify-center items-center'>
+                    <img width="64" height="64" src="https://img.icons8.com/pastel-glyph/64/F1BB45/file.png" alt="file"/>
+                    <p class='text-white text-[0.9rem] mt-2 text-center'>File upload</p>
+                </div>
+                <div class='flex flex-col justify-center items-center ml-[3rem]'>
+                    <img width="64" height="64" src="https://img.icons8.com/ios/100/F1BB45/presentation.png" alt="file"/>
+                    <p class='text-white text-[0.9rem] mt-2 text-center'>Convert and Create</p>
+                </div>
+                <div class='flex flex-col justify-center items-center'>
+                    <img width="64" height="64" src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/F1BB45/external-file-multimedia-kiranshastry-lineal-kiranshastry-1.png" alt="file"/>
+                    <p class='text-white text-[0.9rem] mt-2 text-center'>Export and Save</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- <div class='flex flex-row justify-center items-center gap-x-[5rem] mt-[10rem]'>
+            <div class='flex flex-col w-[50%]'>
+                <h1 class='text-[2.5rem] text-tColor font-bold'>
+                    Generate professional ppt presentation from a PDF file with one click
+                </h1>
+                <br />
+                <p class='text-[1.3rem] text-tColor w-[85%]'>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                    <br /><br />
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                </p>
+            </div>
+            <div class='flex flex-col'>
+                <img height="300" width="300" [src]="landingImg2" alt="" />
+            </div>
+        </div> -->
+    </div>
+</div>
+    

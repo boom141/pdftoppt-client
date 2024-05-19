@@ -7,3 +7,21 @@
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mdc-tab__text-label{
+    color: white!important;
+}
+
+.mat-mdc-tab .mdc-tab-indicator__content--underline {
+    border-color: #F1BB45!important;
+}
+
+.mat-mdc-tab .mdc-tab__ripple::before{
+    background-color: none!important;
+}
+
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+    background-color: transparent!important;
+    box-shadow: none!important;
+}

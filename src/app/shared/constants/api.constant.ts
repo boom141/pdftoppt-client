@@ -5,7 +5,8 @@ export const API_VARIABLES = {
     endpoint: {
         elements: "elements",
         info: "fileInfo",
-        extractImages: "extractImages?pageLimit=",
+        extractImages: "extractImages?pageLimit=5",
+        extractTexts: "extractTexts?pageLimit=5",
         export: "export"
     }
 

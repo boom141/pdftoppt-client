@@ -1,245 +1,183 @@
 export const SAMPLE_TEMPLATES = {
         0: [
-            {
-              "number": 0,
-              "height": 400,
-              "width": 800,
-              "backgroundColor": "#fcffd3",
-              "objects": [
-                {
-                  "type": "text",
-                  "text": "A Heading",
-                  "width": 300,
-                  "height": 67.79999999999998,
-                  "fontFamily": "arial",
-                  "fontWeight": "bold",
-                  "fontSize": 60,
-                  "cursorColor": "blue",
-                  "left": 407,
-                  "top": 128,
-                  "fill": "#000000",
-                  "angle": 0,
-                  "id": 1715960233329
-                },
-                {
-                  "type": "text",
-                  "text": "A subheading",
-                  "width": 200,
-                  "height": 33.89999999999999,
-                  "fontFamily": "arial",
-                  "fontWeight": "normal",
-                  "fontSize": 30,
-                  "cursorColor": "blue",
-                  "left": 420,
-                  "top": 197,
-                  "fill": "#000000",
-                  "angle": 0,
-                  "id": 1715960246649
-                },
-                {
-                  "type": "text",
-                  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                  "width": 833.3039545177322,
-                  "fontFamily": "arial",
-                  "fontWeight": "normal",
-                  "scaleX": 0.3337958222581706,
-                  "scaleY": 0.3337958222581706,
-                  "cursorColor": "blue",
-                  "left": 418.9999999999995,
-                  "top": 246.69766839490245,
-                  "fill": "#000000",
-                  "angle": 0,
-                  "id": 1715960708977
-                },
-                {
-                  "id": 1715972634335,
-                  "src": "https://placehold.co/600x400/000000/FFFFFF/png",
-                  "type": "element",
-                  "left": 56,
-                  "top": 114.79375000000002,
-                  "scaleX": 0.497721875,
-                  "scaleY": 0.497721875,
-                  "flipX": false,
-                  "flipY": false,
-                  "angle": 0
-                }
-              ],
-              "thumbnail": null
-            },
-            {
-              "number": 1,
-              "height": 400,
-              "width": 800,
-              "backgroundColor": "#e5ffd3",
-              "objects": [
-                {
-                  "type": "text",
-                  "text": "A Heading",
-                  "width": 333.109375,
-                  "height": 67.79999999999998,
-                  "fontFamily": "arial",
-                  "fontWeight": "bold",
-                  "fontSize": 60,
-                  "scaleX": 1,
-                  "scaleY": 1,
-                  "cursorColor": "blue",
-                  "left": 45,
-                  "top": 80,
-                  "fill": "#000000",
-                  "angle": 0,
-                  "id": 1715962086521
-                },
-                {
-                  "type": "text",
-                  "text": "A little bit of body Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                  "width": 781.21875,
-                  "fontFamily": "arial",
-                  "fontWeight": "normal",
-                  "scaleX": 0.46019285032971036,
-                  "scaleY": 0.46019285032971036,
-                  "cursorColor": "blue",
-                  "left": 47,
-                  "top": 163.36210114384312,
-                  "fill": "#000000",
-                  "angle": 0,
-                  "id": 1715962098746
-                },
-                {
-                  "id": 1715972654565,
-                  "src": "https://placehold.co/600x400/000000/FFFFFF/png",
-                  "type": "element",
-                  "left": 412.109375,
-                  "top": 79.40625,
-                  "scaleX": 0.591484375,
-                  "scaleY": 0.591484375,
-                  "flipX": false,
-                  "flipY": false,
-                  "angle": 0
-                }
-              ],
-              "thumbnail": null
-            },
-            {
-              "number": 2,
-              "height": 400,
-              "width": 800,
-              "backgroundColor": "#ffd3d3",
-              "objects": [
-                {
-                  "type": "text",
-                  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                  "width": 907.21875,
-                  "fontFamily": "arial",
-                  "fontWeight": "normal",
-                  "scaleX": 0.5,
-                  "scaleY": 0.5,
-                  "cursorColor": "blue",
-                  "left": 268,
-                  "top": 63,
-                  "textAlign": "left",
-                  "fill": "#000000",
-                  "angle": 0,
-                  "id": 1715962368792
-                },
-                {
-                  "type": "text",
-                  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                  "width": 1031.7454335983048,
-                  "fontFamily": "arial",
-                  "fontWeight": "normal",
-                  "scaleX": 0.4718030062141568,
-                  "scaleY": 0.4718030062141568,
-                  "cursorColor": "blue",
-                  "left": 267.257216947447,
-                  "top": 233.35215805255314,
-                  "textAlign": "left",
-                  "fill": "#000000",
-                  "angle": 0,
-                  "id": 1715962465865
-                },
-                {
-                  "id": 1715972664229,
-                  "src": "https://placehold.co/600x400/000000/FFFFFF/png",
-                  "type": "element",
-                  "left": 39.00000000000004,
-                  "top": 62.59375,
-                  "scaleX": 0.32851562500000003,
-                  "scaleY": 0.32851562500000003,
-                  "flipX": false,
-                  "flipY": false,
-                  "angle": 0
-                },
-                {
-                  "id": 1715972674239,
-                  "src": "https://placehold.co/600x400/000000/FFFFFF/png",
-                  "type": "element",
-                  "left": 40,
-                  "top": 224.99374999999986,
-                  "scaleX": 0.32852187500000013,
-                  "scaleY": 0.32852187500000013,
-                  "flipX": false,
-                  "flipY": false,
-                  "angle": 0
-                }
-              ],
-              "thumbnail": null
-            },
-            {
-              "number": 3,
-              "height": 400,
-              "width": 800,
-              "backgroundColor": "#d3f6ff",
-              "objects": [
-                {
-                  "type": "text",
-                  "text": "A Heading",
-                  "width": 300,
-                  "height": 67.79999999999998,
-                  "fontFamily": "arial",
-                  "fontWeight": "bold",
-                  "fontSize": 60,
-                  "scaleX": 1,
-                  "scaleY": 1,
-                  "textAlign": "left",
-                  "cursorColor": "blue",
-                  "left": 53,
-                  "top": 63,
-                  "fill": "#000000",
-                  "angle": 0,
-                  "id": 1715972394501
-                },
-                {
-                  "type": "text",
-                  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                  "width": 681.03125,
-                  "fontFamily": "arial",
-                  "fontWeight": "normal",
-                  "scaleX": 0.47650608576285586,
-                  "scaleY": 0.47650608576285586,
-                  "cursorColor": "blue",
-                  "left": 57.999999999999915,
-                  "top": 149.47641630544766,
-                  "textAlign": "left",
-                  "fill": "#000000",
-                  "angle": 0,
-                  "id": 1715972411462
-                },
-                {
-                  "id": 1715972705003,
-                  "src": "https://placehold.co/600x400/000000/FFFFFF/png",
-                  "type": "element",
-                  "left": 431.9999999999998,
-                  "top": 92.99374999999996,
-                  "scaleX": 0.5275156250000002,
-                  "scaleY": 0.5275156250000002,
-                  "flipX": false,
-                  "flipY": false,
-                  "angle": 0
-                }
-              ],
-              "thumbnail": null
-            }
-          ]
+          {
+            "number": 0,
+            "height": 400,
+            "width": 800,
+            "backgroundColor": "#fffaa3",
+            "objects": [
+              {
+                "id": 1716125341697,
+                "src": "https://ik.imagekit.io/jveduNBx7CU/img_p0_1_X0fBsmlIh",
+                "type": "image",
+                "left": 80,
+                "top": 160,
+                "scaleX": 1.0548109354160253,
+                "scaleY": 1.0548109354160253,
+                "flipX": false,
+                "flipY": false,
+                "angle": 0
+              },
+              {
+                "type": "text",
+                "text": "A Heading",
+                "textType": "heading",
+                "width": 146.078125,
+                "height": 33.89999999999999,
+                "fontFamily": "arial",
+                "fontWeight": "normal",
+                "fontSize": 30,
+                "scaleX": 1.2660862397609602,
+                "scaleY": 1.2660862397609602,
+                "textAlign": "left",
+                "cursorColor": "blue",
+                "left": 420,
+                "top": 100,
+                "fill": "#000000",
+                "angle": 0,
+                "id": 1716125345331
+              },
+              {
+                "type": "text",
+                "text": "Pokémon as mysterious creatures with many secrets living alongside humans or in the wild. They can be caught using a Poké Ball for carrying around. The exact number of Pokémon species is unknown, with over 1000 confirmed and potentially more to be discovered in the future.",
+                "textType": "body",
+                "width": 152.05343340341338,
+                "height": 116.164,
+                "fontFamily": "arial",
+                "fontWeight": "normal",
+                "fontSize": 10,
+                "scaleX": 1.7842012356575456,
+                "scaleY": 1.7842012356575456,
+                "cursorColor": "blue",
+                "left": 420,
+                "top": 160,
+                "textAlign": "left",
+                "fill": "#000000",
+                "angle": 0,
+                "id": 1716125378994
+              }
+            ],
+            "thumbnail": null
+          },
+          {
+            "number": 1,
+            "height": 400,
+            "width": 800,
+            "backgroundColor": "#ffa3a3",
+            "objects": [
+              {
+                "type": "text",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                "textType": "body",
+                "width": 207.75817875685905,
+                "height": 37.516,
+                "fontFamily": "arial",
+                "fontWeight": "normal",
+                "fontSize": 10,
+                "scaleX": 1.6865357184882606,
+                "scaleY": 1.610277557740145,
+                "cursorColor": "blue",
+                "left": 220,
+                "top": 100,
+                "textAlign": "center",
+                "fill": "#000000",
+                "angle": 0,
+                "id": 1716128148627
+              },
+              {
+                "type": "text",
+                "text": "A Heading",
+                "textType": "heading",
+                "width": 187.078125,
+                "height": 33.89999999999999,
+                "fontFamily": "arial",
+                "fontWeight": "bold",
+                "fontSize": 30,
+                "scaleX": 1,
+                "scaleY": 1,
+                "textAlign": "center",
+                "cursorColor": "blue",
+                "left": 300,
+                "top": 59.99999999999999,
+                "fill": "#000000",
+                "angle": 0,
+                "id": 1716128174787
+              },
+              {
+                "id": 1716128205611,
+                "src": "https://ik.imagekit.io/jveduNBx7CU/img_p2_1_8rPGgcabA",
+                "type": "image",
+                "left": 220,
+                "top": 180,
+                "scaleX": 0.6677782012195119,
+                "scaleY": 0.6677782012195119,
+                "flipX": false,
+                "flipY": false,
+                "angle": 0
+              }
+            ],
+            "thumbnail": null
+          },
+          {
+            "number": 2,
+            "height": 400,
+            "width": 800,
+            "backgroundColor": "#a3feff",
+            "objects": [
+              {
+                "type": "text",
+                "text": "A Heading",
+                "textType": "heading",
+                "width": 147.078125,
+                "height": 33.89999999999999,
+                "fontFamily": "arial",
+                "fontWeight": "normal",
+                "fontSize": 30,
+                "scaleX": 1,
+                "scaleY": 1,
+                "textAlign": "left",
+                "cursorColor": "blue",
+                "left": 60,
+                "top": 120,
+                "fill": "#000000",
+                "angle": 0,
+                "id": 1716128265474
+              },
+              {
+                "type": "text",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                "textType": "body",
+                "width": 149.0360923473753,
+                "height": 50.623999999999995,
+                "fontFamily": "arial",
+                "fontWeight": "normal",
+                "fontSize": 10,
+                "scaleX": 2.160001103265666,
+                "scaleY": 2.160001103265666,
+                "cursorColor": "blue",
+                "left": 60,
+                "top": 160,
+                "textAlign": "left",
+                "fill": "#000000",
+                "angle": 0,
+                "id": 1716128275291
+              },
+              {
+                "id": 1716128294227,
+                "src": "https://ik.imagekit.io/jveduNBx7CU/img_p1_1_zMRc8Sx5Im",
+                "type": "image",
+                "left": 440,
+                "top": 80,
+                "scaleX": 0.8114816107415329,
+                "scaleY": 0.8114816107415329,
+                "flipX": false,
+                "flipY": false,
+                "angle": 0
+              }
+            ],
+            "thumbnail": null
+          }
+        ]
     }
 
 
@@ -250,7 +188,7 @@ export const SAMPLE_TEXT_DATA = {
     "data": [
         {
             "page": 1,
-            "text": "The text describes Pokémon as mysterious creatures with many secrets living alongside humans or in the wild. They can be caught using a Poké Ball for carrying around. The exact number of Pokémon species is unknown, with over 1000 confirmed and potentially more to be discovered in the future."
+            "text": "Pokémon as mysterious creatures with many secrets living alongside humans or in the wild. They can be caught using a Poké Ball for carrying around. The exact number of Pokémon species is unknown, with over 1000 confirmed and potentially more to be discovered in the future."
         },
         {
             "page": 2,
@@ -274,49 +212,57 @@ export const SAMPLE_TEXT_DATA = {
 
 
 export const SAMPLE_IMAGE_DATA = {
-    "success": true,
-    "code": 200,
-    "data": [
-        {
-            "name": "img_p0_2_tKiPhstql",
-            "url": "https://ik.imagekit.io/jveduNBx7CU/img_p0_2_tKiPhstql",
-            "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p0_2_tKiPhstql"
-        },
-        {
-            "name": "img_p0_3_Ba6FkiS3w",
-            "url": "https://ik.imagekit.io/jveduNBx7CU/img_p0_3_Ba6FkiS3w",
-            "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p0_3_Ba6FkiS3w"
-        },
-        {
-            "name": "img_p0_1_MIbzNdbmfo",
-            "url": "https://ik.imagekit.io/jveduNBx7CU/img_p0_1_MIbzNdbmfo",
-            "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p0_1_MIbzNdbmfo"
-        },
-        {
-            "name": "img_p0_4_q_MkgmstG",
-            "url": "https://ik.imagekit.io/jveduNBx7CU/img_p0_4_q_MkgmstG",
-            "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p0_4_q_MkgmstG"
-        },
-        {
-            "name": "img_p3_1_-juwjH_ZmD",
-            "url": "https://ik.imagekit.io/jveduNBx7CU/img_p3_1_-juwjH_ZmD",
-            "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p3_1_-juwjH_ZmD"
-        },
-        {
-            "name": "img_p2_1_l7rR_-OEz",
-            "url": "https://ik.imagekit.io/jveduNBx7CU/img_p2_1_l7rR_-OEz",
-            "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p2_1_l7rR_-OEz"
-        },
-        {
-            "name": "img_p4_1_xGwCFm4YG0",
-            "url": "https://ik.imagekit.io/jveduNBx7CU/img_p4_1_xGwCFm4YG0",
-            "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p4_1_xGwCFm4YG0"
-        },
-        {
-            "name": "img_p1_1_7Gr-TG0Hc6",
-            "url": "https://ik.imagekit.io/jveduNBx7CU/img_p1_1_7Gr-TG0Hc6",
-            "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p1_1_7Gr-TG0Hc6"
-        }
-    ],
-    "message": "Request success"
+  "success": true,
+  "code": 200,
+  "data": [
+      {
+          "page": 1,
+          "name": "img_p0_1_X0fBsmlIh",
+          "url": "https://ik.imagekit.io/jveduNBx7CU/img_p0_1_X0fBsmlIh",
+          "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p0_1_X0fBsmlIh"
+      },
+      {
+          "page": 1,
+          "name": "img_p0_3_sBDL4_B-z",
+          "url": "https://ik.imagekit.io/jveduNBx7CU/img_p0_3_sBDL4_B-z",
+          "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p0_3_sBDL4_B-z"
+      },
+      {
+          "page": 1,
+          "name": "img_p0_4_ZIUZYf7az",
+          "url": "https://ik.imagekit.io/jveduNBx7CU/img_p0_4_ZIUZYf7az",
+          "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p0_4_ZIUZYf7az"
+      },
+      {
+          "page": 1,
+          "name": "img_p0_2_sqZ6wYQvb",
+          "url": "https://ik.imagekit.io/jveduNBx7CU/img_p0_2_sqZ6wYQvb",
+          "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p0_2_sqZ6wYQvb"
+      },
+      {
+          "page": 2,
+          "name": "img_p1_1_zMRc8Sx5Im",
+          "url": "https://ik.imagekit.io/jveduNBx7CU/img_p1_1_zMRc8Sx5Im",
+          "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p1_1_zMRc8Sx5Im"
+      },
+      {
+          "page": 4,
+          "name": "img_p3_1_NFMJD9qKnQ",
+          "url": "https://ik.imagekit.io/jveduNBx7CU/img_p3_1_NFMJD9qKnQ",
+          "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p3_1_NFMJD9qKnQ"
+      },
+      {
+          "page": 3,
+          "name": "img_p2_1_8rPGgcabA",
+          "url": "https://ik.imagekit.io/jveduNBx7CU/img_p2_1_8rPGgcabA",
+          "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p2_1_8rPGgcabA"
+      },
+      {
+          "page": 5,
+          "name": "img_p4_1_j1q7jkUpC",
+          "url": "https://ik.imagekit.io/jveduNBx7CU/img_p4_1_j1q7jkUpC",
+          "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p4_1_j1q7jkUpC"
+      }
+  ],
+  "message": "Request success"
 }

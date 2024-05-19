@@ -1,19 +1,19 @@
 <main class="bg-gray-200 h-screen ">
     <div class="flex flex-row">
-        <div class="bg-customDark p-5 text-white flex flex-row justify-start items-start gap-x-5 max-h-screen">
+        <div class="bg-customDark p-5 transition overflow-hidden text-white flex flex-row justify-between items-start space-x-5 max-h-screen">
             <div class="flex flex-col gap-y-5 w-max flex-none">
                 <div role="button" (click)="openToolContent()" Class="
                     flex p-2 rounded-md flex-col items-center justify-center">
                     <img class="pointer-events-none select-none" width="30" height="30" src="https://img.icons8.com/sf-black/64/FFFFFF/menu.png" alt="text"/>
                 </div>
-                <div>
+                <!-- <div>
                     <div role="button" (click)="selectTool($event)" id="elements" [ngClass]="
                         {'flex p-2 rounded-md flex-col items-center justify-center':true,
                         'border border-slate-50': currentTool == 'elements'}">
                         <img class="pointer-events-none select-none" width="30" height="30" src="https://img.icons8.com/fluency-systems-regular/48/FFFFFF/shape--v1.png" alt="text"/>
                         <p class="text-sm pointer-events-none">Elements</p>
                     </div>
-                </div>
+                </div> -->
                 
                 <div class="cursor-not-allowed">
                     <div role="button" (click)="selectTool($event)" id="text" [ngClass]="
@@ -35,15 +35,14 @@
                 </div>
            </div>
            @if(isToolContent){
-               <div class="w-[20rem] ">
-                    <!-- <input type="text" placeholder="Search" class="w-full p-2 rounded-md text-black mb-5 outline-none"> -->
-                    <div class="overflow-y-auto h-full">
+               <div class="w-[30rem] h-screen">
+                    <div class="overflow-y-auto h-full ">
                         <ng-container >
                                 @if(currentTool == 'elements'){
                                     <app-elements [currentTool]="currentTool" class="flex flex-col gap-y-5 w-full"></app-elements>
                                 }
                                 @if(currentTool ==  'uploadElem'){
-                                <app-upload-elements [currentTool]="currentTool" class="flex flex-col gap-y-5 w-full"></app-upload-elements> 
+                                    <app-upload-elements [currentTool]="currentTool" class="flex flex-col gap-y-5 w-full"></app-upload-elements> 
                                 }
                                 @if(currentTool ==  'text'){
                                     <app-text [currentTool]="currentTool" class="flex flex-col gap-y-5 w-full"></app-text> 
@@ -62,14 +61,24 @@
                     <button (click)="export()" class="bg-customDark border text-white font-medium p-3 w-32 rounded-md">
                         Export
                     </button>
+                    <button (click)="back()" class="bg-primary border text-white font-medium p-3 w-32 rounded-md">
+                        Go Back
+                    </button>
                 </div>
             </div>
             <div (click)="canvasEvent()" class=" bg-transparent flex-grow text-center flex justify-center items-center">
                 <canvas  id="app-canvas" width="800" height="400"></canvas>
             </div>
-            <div class="bg-white border  n p-5 text-center flex flex-row justify-start gap-x-5">
+            <div class="bg-white flex  flex-row justify-start space-x-5 items-center w-full h-[8rem] px-3">
                 @for(slide of renderSlides(); track $index){
-                    <app-slide-container [id]="slide.number"></app-slide-container>
+                    <div  [ngClass]="{'transition-all relative border-2 border-customDark rounded-md box-border': activeSlide === $index}">
+                        @if(activeSlide === $index){
+                            <div role="button" (click)="removeSlide()"  class="absolute left-[80%] top-[-1rem] flex justify-between items-center rounded-md p-1 bg-primary transition">
+                                <img class="pointer-events-none" width="30" height="30" src="https://img.icons8.com/windows/32/FFFFFF/trash.png" alt="trash"/>
+                            </div>
+                        }
+                        <app-slide-container [thumbnail]="slide.thumbnail"(changeActiveSlide)="selectActiveSlide($event)" [id]="slide.number"></app-slide-container>
+                    </div>
                 }
                <button (click)="addSlides()" class="border border-slate-400 rounded-md h-[5rem] w-[9rem] flex justify-center items-center bg-slate-300">
                     <img width="50" height="50" src="https://img.icons8.com/ios/50/plus-math--v1.png" alt="plus-math--v1"/>

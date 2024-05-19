@@ -1,56 +1,43 @@
-<ng-container>
-    <!-- @if(isLoading){
-        <app-placeholder></app-placeholder>
-    }@else{
-        @if(isFileSelected){
-            <div class="flex flex-col w-full">
-                <p class="text-2xl font-semibold ">Pages</p>
-                <div class="flex flex-row justify-between space-x-5 mt-5">
-                    <div role="button" (click)="getPageLimit($event)" id="5" [ngClass]="
-                        {
-                            'border-2 border-slate-400 rounded-lg hover:border-white transition flex flex-col justify-center items-center p-5': true, 
-                            'border-white':clickPageOption
-                        }">
-                        <p class="pointer-events-none font-semibold text-md">1 - 5</p>
-                        <p class="pointer-events-none font-light text-xl">Pages</p>
-                    </div>
-                    <div role="button" class="cursor-not-allowed border-2 border-slate-400 rounded-lg hover:border-white transition flex flex-col justify-center items-center p-5">
-                        <p class="font-semibold text-md">5 - 10</p>
-                        <p class="font-light text-xl">Pages</p>
-                    </div>
-                    <div role="button" class="cursor-not-allowed border-2 border-slate-400 rounded-lg hover:border-white transition flex flex-col justify-center items-center p-5">
-                        <p class="font-semibold text-md">10 - 15</p>
-                        <p class="font-light text-xl">Pages</p>
-                    </div>
-                </div>
-            </div>
-            <Button (click)="generatePresentation()" class="bg-dark p-2 rounded-md font-medium">
-                Generate Presentation
-            </Button>
-            <app-tool-content (getContentSource)="getElementSource($event)" [isLoading]="isLoading" [loadedData]="data"></app-tool-content>
-        }@else{        
-            <input class="hidden" type="file" (change)="onSelectFile($event)" #fileUpload>
-            <Button (click)="fileUpload.click()"  class="bg-dark p-2 rounded-md font-medium">
-                Upload File
-            </Button>
-        }
-    } -->
-
-</ng-container>
-<mat-tab-group>
+<mat-tab-group >
     <mat-tab label="Images">
-        <div class="flex flex-col flex-wrap space-x-5 space-y-5 justify-start">
-
+        <div class="mt-5 flex flex-col flex-wrap justify-start">
+            @for(pageData of imageData; track $index){
+                <p class="font-semibold">Page {{$index + 1}}</p>
+                <hr>
+                <section class="flex-grow p-5">
+                    <div class="flex flex-row flex-wrap space-x-3 justify-start">
+                        @for(image of pageData; track $index){
+                                <div class="h-[5rem] w-[5rem] max-w-xs max-h-xs">
+                                    <img (click)="getElementSource(img.src)" [src]="image.url" alt="Your Image" class="cursor-pointer w-full aspect-w-16 aspect-h-9 object-cover" #img>
+                                </div>
+                        }
+                    </div>
+                </section>
+                }@empty {
+                <p class="p-2">Fetching data...</p>
+            }
         </div>
-        @for(image of data; track data){
-            <section class="flex flex-col gap-y-3 justify-start">
-                <div class="h-[5rem] w-[5rem] max-w-xs max-h-xs">
-                    <img (click)="getElementSource(img.src)" [src]="image.url" alt="Your Image" class="cursor-pointer w-full aspect-w-16 aspect-h-9 object-cover" #img>
-                </div>
-            </section>
-        }@empty {
-            <p class="p-2">No content found....</p>
-        }
     </mat-tab>
-    <mat-tab label="Texts"> Content 2 </mat-tab>
+    <mat-tab  label="Texts"> 
+        <div class="mt-5 flex flex-col flex-wrap justify-start">
+            @for(pageData of textData; track $index){
+                <p class="font-semibold">Page {{$index + 1}}</p>
+                <hr>
+                <section class="flex-grow p-5">
+                    <div class="flex flex-row flex-wrap  justify-start">
+                        <p>{{ pageData.text }}</p>
+                    </div>
+                </section>
+                }@empty {
+                <p class="p-2">Fetching data...</p>
+            }
+        </div>
+    </mat-tab>
+    <mat-tab  label="Templates"> 
+        <div class="mt-5 flex flex-row flex-wrap justify-start items-start">
+            <button id="0" (click)="selectedTempalate(template.id)" class="p-5 rounded-lg text-black font-semibold bg-white border-2 hover:border-primary" #template>
+                Default 0
+            </button>
+        </div>
+    </mat-tab>
 </mat-tab-group>

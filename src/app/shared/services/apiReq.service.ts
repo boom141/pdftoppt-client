@@ -19,8 +19,12 @@ export class ApiReqService {
         return this.http.post(this.apiUrl + API_VARIABLES.endpoint.info, formData)
     }
 
-    extractImages(pageLimit: any): Observable<any>{
-        return this.http.get(this.apiUrl + API_VARIABLES.endpoint.extractImages + pageLimit)
+    extractImages(): Observable<any>{
+        return this.http.get(this.apiUrl + API_VARIABLES.endpoint.extractImages)
+    }
+
+    extractTexts(): Observable<any>{
+        return this.http.get(this.apiUrl + API_VARIABLES.endpoint.extractTexts)
     }
 
     exportPresentation(data: any): Observable<any>{

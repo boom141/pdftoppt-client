@@ -34,8 +34,8 @@ export class ToolContentComponent implements OnInit {
       type: 'element',
       left: 100,
       top: 100,
-      scaleX: 1,
-      scaleY: 1,
+      scaleX: 0.5,
+      scaleY: 0.5,
       flipX: false,
       flipY: false,
       angle: 0
