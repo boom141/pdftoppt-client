@@ -68,7 +68,6 @@ export class EditorComponent implements OnInit {
       let response = await firstValueFrom(this.api.extractImages())
       this.editor.imagesFromUpload = this.editor.organizedPerPage(response.data)
       this.editor.textsFromUpload = SAMPLE_TEXT_DATA
-      console.log(this.editor.textsFromUpload.data)
       this.editor.setData.emit(true)
       this.dialog.closeAll()
 
@@ -87,26 +86,35 @@ export class EditorComponent implements OnInit {
       })
 
       let slidesData = this.editor.getSlidesData()
+      console.log(slidesData)
       let response = await firstValueFrom(this.api.exportPresentation({data: slidesData}))
-      console.log(response)
       this.dialog.closeAll()
-      // const blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' });
+      const base64Data = response.data; // Assuming response.data contains the base64 data
 
-      // // Create a temporary URL for the Blob
-      // const url = window.URL.createObjectURL(blob);
-
-      // // Create an anchor element for downloading the file
-      // const a = document.createElement('a');
-      // a.href = url;
-      // a.download = 'file.pptx'; // Specify the filename
-
-      // // Trigger the download by clicking on the anchor element
-      // document.body.appendChild(a);
-      // a.click();
-
-      // // Cleanup
-      // window.URL.revokeObjectURL(url);
-      // document.body.removeChild(a);
+      // Convert the base64 data to a Blob
+      const byteCharacters = atob(base64Data);
+      const byteNumbers = new Array(byteCharacters.length);
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      const blob = new Blob([byteArray], { type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' });
+      
+      // Create a temporary URL for the Blob
+      const url = window.URL.createObjectURL(blob);
+      
+      // Create an anchor element for downloading the file
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'result.pptx'; // Specify the filename
+      
+      // Trigger the download by clicking on the anchor element
+      document.body.appendChild(a);
+      a.click();
+      
+      // Cleanup
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
     }
 
     renderSlides(): any {
@@ -132,6 +140,7 @@ export class EditorComponent implements OnInit {
     }
 
     back(){
+      localStorage.clear()
       this.router.navigate([''])
     }
 

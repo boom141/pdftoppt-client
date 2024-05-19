@@ -37,6 +37,7 @@ export class LandingComponent {
     private api: ApiReqService,
     private router: Router
   ){
+
   }  
 
 
