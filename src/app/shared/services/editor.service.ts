@@ -2,7 +2,7 @@ import { EventEmitter, Injectable } from "@angular/core";
 import { fabric } from "fabric";
 
 import SlideData from "../types";
-import { SAMPLE_IMAGE_DATA, SAMPLE_TEMPLATES, SAMPLE_TEXT_DATA } from "../../../assets/data/00-sample-data";
+import { SAMPLE_TEMPLATES } from "../../../assets/data/00-sample-data";
 
 @Injectable({
     providedIn: 'root',
@@ -33,7 +33,8 @@ export class EditorService {
       return imageStorage
     }
 
-    loadTemplate(templateId:any): void{
+    loadTemplate(templateId:any): void{   
+
       let template = (SAMPLE_TEMPLATES as any)[templateId]
 
       template.forEach((slide:any, index:number) =>{
@@ -43,7 +44,6 @@ export class EditorService {
             }
             
             if(obj.type === 'image'){
-              console.log(this.imagesFromUpload[index][0].url)
               obj.src = this.imagesFromUpload[index][0].url
             }
 
@@ -73,6 +73,7 @@ export class EditorService {
 
     initRender(): void{
       let slide: any = this.slides?.[this.currentSlide as number]
+      // this.clearCanvas()
       if(this.canvas){
         this.canvas.backgroundColor = slide.backgroundColor
       }
@@ -83,7 +84,6 @@ export class EditorService {
             this.renderElem(object);
           }
       }
-
       
     }
 
@@ -166,7 +166,7 @@ export class EditorService {
         this.slides[this.currentSlide].backgroundColor = this.canvas?.backgroundColor as string
         this.slides[this.currentSlide].objects = [...dataObjects as []];
         
-        this.slides[this.currentSlide].thumbnail = this.currentThumbnail
+        // this.slides[this.currentSlide].thumbnail = this.currentThumbnail
         this.saveSlidesData()
         this.canvas?.renderAll()
       }

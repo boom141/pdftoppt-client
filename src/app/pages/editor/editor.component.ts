@@ -66,8 +66,9 @@ export class EditorComponent implements OnInit {
       })
 
       let response = await firstValueFrom(this.api.extractImages())
+      console.log(response.data)
       this.editor.imagesFromUpload = this.editor.organizedPerPage(response.data)
-      this.editor.textsFromUpload = SAMPLE_TEXT_DATA
+      this.editor.textsFromUpload = await (firstValueFrom(this.api.extractTexts()))
       this.editor.setData.emit(true)
       this.dialog.closeAll()
 
