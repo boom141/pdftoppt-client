@@ -1,6 +1,6 @@
 <main class="bg-gray-200 h-screen ">
     <div class="flex flex-row">
-        <div class="bg-customDark p-5 transition overflow-hidden text-white flex flex-row justify-between items-start space-x-5 max-h-screen">
+        <div class="bg-customDark p-5 flex-shrink-0 transition overflow-hidden text-white flex flex-row justify-between items-start space-x-5 max-h-screen">
             <div class="flex flex-col gap-y-5 w-max flex-none">
                 <div role="button" (click)="openToolContent()" Class="
                     flex p-2 rounded-md flex-col items-center justify-center">
@@ -35,7 +35,7 @@
                 </div>
            </div>
            @if(isToolContent){
-               <div class="w-[30rem] h-screen">
+               <div class="w-[20rem] h-screen">
                     <div class="overflow-y-auto h-full ">
                         <ng-container >
                                 @if(currentTool == 'elements'){
@@ -52,7 +52,7 @@
                </div>
            }
         </div>
-        <div class="flex flex-col w-screen h-screen">
+        <div class="flex-grow flex flex-col h-screen max-w-full overflow-hidden">
             <div class="bg-white p-3 flex flex-row justify-between items-center gap-x-2">
                 <div class="flex flex-row w-full justify-start items-center">
                     <app-entity-attributes class="p-2"></app-entity-attributes> 
@@ -69,20 +69,22 @@
             <div (click)="canvasEvent()" class=" bg-transparent flex-grow text-center flex justify-center items-center">
                 <canvas  id="app-canvas" width="800" height="400"></canvas>
             </div>
-            <div class="bg-white flex  flex-row justify-start space-x-5 items-center w-full h-[8rem] px-3">
-                @for(slide of renderSlides(); track $index){
-                    <div  [ngClass]="{'transition-all relative border-2 border-customDark rounded-md box-border': activeSlide === $index}">
-                        @if(activeSlide === $index){
-                            <div role="button" (click)="removeSlide()"  class="absolute left-[80%] top-[-1rem] flex justify-between items-center rounded-md p-1 bg-primary transition">
-                                <img class="pointer-events-none" width="30" height="30" src="https://img.icons8.com/windows/32/FFFFFF/trash.png" alt="trash"/>
-                            </div>
-                        }
-                        <app-slide-container [thumbnail]="slide.thumbnail"(changeActiveSlide)="selectActiveSlide($event)" [id]="slide.number"></app-slide-container>
-                    </div>
-                }
-               <button (click)="addSlides()" class="border border-slate-400 rounded-md h-[5rem] w-[9rem] flex justify-center items-center bg-slate-300">
-                    <img width="50" height="50" src="https://img.icons8.com/ios/50/plus-math--v1.png" alt="plus-math--v1"/>
-               </button>
+            <div class="bg-white flex flex-row border-[5px] max-w-full overflow-x-auto">
+                <div class="flex-row flex justify-start space-x-5 items-center h-[8rem] px-3">
+                    @for(slide of renderSlides(); track $index){
+                        <div  [ngClass]="{'transition-all relative border-2 border-customDark rounded-md box-border': activeSlide === $index}">
+                            @if(activeSlide === $index){
+                                <div role="button" (click)="removeSlide()"  class="absolute left-[80%] top-[-1rem] flex justify-between items-center rounded-md p-1 bg-primary transition">
+                                    <img class="pointer-events-none" width="30" height="30" src="https://img.icons8.com/windows/32/FFFFFF/trash.png" alt="trash"/>
+                                </div>
+                            }
+                            <app-slide-container class="flex-shrink-0" (changeActiveSlide)="selectActiveSlide($event)" [id]="slide.number - 1"></app-slide-container>
+                        </div>
+                    }
+                   <button (click)="addSlides()" class="border border-slate-400 rounded-md h-[5rem] w-[9rem] flex justify-center items-center bg-slate-300">
+                        <img width="50" height="50" src="https://img.icons8.com/ios/50/plus-math--v1.png" alt="plus-math--v1"/>
+                   </button>        
+                </div>
             </div>
         </div>
     </div>

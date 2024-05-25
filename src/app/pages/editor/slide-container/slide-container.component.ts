@@ -24,12 +24,13 @@ export class SlideContainerComponent{
   onChangeSlide(): void{
     this.editor.clearCanvas()
     if(this.editor.slides?.[this.editor.currentSlide as number]){
-      this.editor.slides[this.editor.currentSlide as number].thumbnail = this.editor.canvas?.toDataURL() as any
       this.editor.saveSlidesData()
     }
     this.editor.currentSlide = Number(this.id) as number
+    console.log(this.editor.currentSlide)
+    this.changeActiveSlide.emit(true)
+    
     this.editor.initRender()
     
-    this.changeActiveSlide.emit(true)
   }
 }

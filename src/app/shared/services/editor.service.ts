@@ -2,7 +2,7 @@ import { EventEmitter, Injectable } from "@angular/core";
 import { fabric } from "fabric";
 
 import SlideData from "../types";
-import { SAMPLE_TEMPLATES } from "../../../assets/data/00-sample-data";
+
 
 @Injectable({
     providedIn: 'root',
@@ -16,7 +16,7 @@ export class EditorService {
     slideCount: number = 0;
     currentSlide: number = 0;
     withTemplate: number | null = null
-    pageLimit: number = 5
+    maxPage: number = 5
     currentThumbnail: string = ''
 
     imagesFromUpload: any
@@ -26,7 +26,7 @@ export class EditorService {
     showLoading = new EventEmitter()
 
     organizedPerPage(data:any){
-      let imageStorage:any = Array.from({ length: 5 }, () => [])
+      let imageStorage:any = Array.from({ length: this.maxPage }, () => [])
       data.forEach( (obj:any) => {
         imageStorage[obj.page-1] = [...imageStorage[obj.page-1], obj]
       })
@@ -34,23 +34,62 @@ export class EditorService {
     }
 
     loadTemplate(templateId:any): void{   
-
-      let template = (SAMPLE_TEMPLATES as any)[templateId]
-
-      template.forEach((slide:any, index:number) =>{
-          slide.objects.map((obj:any) =>  {
-            if(obj.type === 'text' && obj.textType === 'body'){
-              obj.text = this.textsFromUpload.data[index].text
-            }
-            
-            if(obj.type === 'image'){
-              obj.src = this.imagesFromUpload[index][0].url
-            }
-
-          })
-      })  
+      const backgroundColor = ['#ffc2c2', '#ffedc2', '#eaffc2', '#c2fbff', '#c5c2ff']
+      let newTemplate:any = []
       
-      this.slides = template
+      for(let i=0; i<this.maxPage; i++){
+        let newSlide = this.createSlides()
+        newSlide.backgroundColor = backgroundColor[Math.floor(Math.random() * backgroundColor.length)]
+
+        let newImageObject: any;
+        if(this.imagesFromUpload[i][0]){
+          newImageObject = {
+            id: this.createId(),
+            src: this.imagesFromUpload[i][0].url,
+            type: 'image',
+            left: 100,
+            top: 100,
+            scaleX: 0.7,
+            scaleY: 0.7,
+            flipX: false,
+            flipY: false,
+            angle: 0
+          }
+        }
+
+        if(newImageObject !== undefined){
+          newSlide.objects = [...newSlide.objects, newImageObject]
+        }
+
+        const newTextObject = {
+          id: this.createId(),
+          type: 'text',
+          text: this.textsFromUpload[i].text,
+          textType: 'body',
+          width: 500,
+          height: 100,
+          fontFamily: 'arial',
+          fontWeight: 'normal',
+          fontSize: 30,      
+          scaleX: 0.5,
+          scaleY: 0.5,
+          cursorColor: 'blue',
+          left: 500,
+          top: 100,
+          textAlign: 'left',
+          fill: '#000000',
+          angle: 0 
+        }
+
+        if(newTextObject !== undefined){
+          newSlide.objects = [...newSlide.objects, newTextObject]
+        }
+    
+        newTemplate = [...newTemplate as any, newSlide]
+      }
+
+      this.slides = newTemplate 
+      console.log('new slide', this.slides)
       this.saveSlidesData()
       this.initRender()
     }
@@ -66,14 +105,13 @@ export class EditorService {
     initCanvas(): void {
       this.canvas = new fabric.Canvas('app-canvas',{backgroundColor: 'white'});
       let slidesData = this.getSlidesData()
-      this.slideCount = slidesData ? slidesData.slice(-1)[0].number + 1 : 0;
       this.slides = slidesData ? slidesData : [this.createSlides()]
+      this.slideCount = slidesData ? slidesData.slice(-1)[0].number + 1 : 0;
       this.saveSlidesData();
     }
 
     initRender(): void{
       let slide: any = this.slides?.[this.currentSlide as number]
-      // this.clearCanvas()
       if(this.canvas){
         this.canvas.backgroundColor = slide.backgroundColor
       }

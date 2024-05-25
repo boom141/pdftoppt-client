@@ -2,14 +2,14 @@
     <mat-tab label="Images">
         <div class="mt-5 flex flex-col flex-wrap justify-start">
             @for(pageData of imageData; track $index){
-                <p class="font-semibold">Page {{$index + 1}}</p>
+                <p class="font-semibold">Page {{pageData.page}}</p>
                 <hr>
                 <section class="flex-grow p-5">
-                    <div class="flex flex-row flex-wrap space-x-3 justify-start">
-                        @for(image of pageData; track $index){
-                                <div class="h-[5rem] w-[5rem] max-w-xs max-h-xs">
-                                    <img (click)="getElementSource(img.src)" [src]="image.url" alt="Your Image" class="cursor-pointer w-full aspect-w-16 aspect-h-9 object-cover" #img>
-                                </div>
+                    <div class="flex flex-row justify-start flex-wrap">
+                        @for(image of pageData.images; track $index){
+                            <div class=" max-w-xs max-h-xs rounded-md transition-all flex items-center hover:border-2 border-primary">
+                                <img class="h-[2rem] w-[2rem]" (click)="getElementSource(img.src)" [src]="image.url" alt="Your Image" class="cursor-pointer w-full aspect-w-16 aspect-h-9 object-cover" #img>
+                            </div>
                         }
                     </div>
                 </section>
@@ -21,13 +21,15 @@
     <mat-tab  label="Texts"> 
         <div class="mt-5 flex flex-col flex-wrap justify-start">
             @for(pageData of textData; track $index){
-                <p class="font-semibold">Page {{$index + 1}}</p>
-                <hr>
-                <section class="flex-grow p-5">
-                    <div class="flex flex-row flex-wrap  justify-start">
-                        <p>{{ pageData.text }}</p>
-                    </div>
-                </section>
+                @if(pageData.text){
+                    <p class="font-semibold">Page {{$index + 1}}</p>
+                    <hr>
+                    <section class="flex-grow p-5">
+                        <div (click)="addContent($event)" title="Copy Text" role="button" class="flex flex-row flex-wrap justify-start p-3 rounded-md transition-all hover:border-2 border-primary">
+                            {{ pageData.text }}
+                        </div>
+                    </section>
+                }
                 }@empty {
                 <p class="p-2">Fetching data...</p>
             }

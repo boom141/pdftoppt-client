@@ -40,13 +40,13 @@ export class UploadElementsComponent implements OnInit {
     ngOnInit(): void{
       this.editor.setData.subscribe((res:any) =>{
         this.imageData = this.editor.imagesFromUpload
-        this.textData = this.editor.textsFromUpload.data
+        this.textData = this.editor.textsFromUpload
       })
       if(this.editor.imagesFromUpload){
         this.imageData = this.editor.imagesFromUpload
       }
       if(this.editor.textsFromUpload){
-        this.textData = this.editor.textsFromUpload.data
+        this.textData = this.editor.textsFromUpload
       }
     }
 
@@ -107,6 +107,32 @@ export class UploadElementsComponent implements OnInit {
   
       this.editor.registerObjectToSlide(elementProps)
       this.editor.renderElem(elementProps)
+    }
+
+    addContent(event: Event){
+      let target = (event.target as HTMLElement)
+      const newTextObject = {
+        id: this.editor.createId(),
+        type: 'text',
+        text: target.innerText,
+        textType: 'body',
+        width: 800,
+        height: 100,
+        fontFamily: 'arial',
+        fontWeight: 'normal',
+        fontSize: 30,      
+        scaleX: 0.5,
+        scaleY: 0.5,
+        cursorColor: 'blue',
+        left: 200,
+        top: 150,
+        textAlign: 'center',
+        fill: '#000000',
+        angle: 0 
+      }
+
+      this.editor.registerObjectToSlide(newTextObject)
+      this.editor.renderText(newTextObject)
     }
 }
 

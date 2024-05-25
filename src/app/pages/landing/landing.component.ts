@@ -51,7 +51,7 @@ export class LandingComponent {
 
       let response = await firstValueFrom(this.api.uploadFile(newForm as FormData))
       if(response.success){
-        console.log('success')
+        this.editor.maxPage = response.data  .maxPage
         this.router.navigate(['designer'])
         this.isFileSelected = true
         this.isLoading = false

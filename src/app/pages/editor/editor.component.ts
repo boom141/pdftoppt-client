@@ -65,17 +65,18 @@ export class EditorComponent implements OnInit {
         disableClose: true
       })
 
-      let response = await firstValueFrom(this.api.extractImages())
-      console.log(response.data)
-      this.editor.imagesFromUpload = this.editor.organizedPerPage(response.data)
-      this.editor.textsFromUpload = await (firstValueFrom(this.api.extractTexts()))
+      let response1 = await firstValueFrom(this.api.extractImages())
+      console.log(response1.data)
+      this.editor.imagesFromUpload = response1.data
+      let response2 = await (firstValueFrom(this.api.extractTexts()))
+      this.editor.textsFromUpload = response2.data
       this.editor.setData.emit(true)
       this.dialog.closeAll()
 
-      // let response = SAMPLE_IMAGE_DATA
-      // this.editor.imagesFromUpload = this.editor.organizedPerPage(response.data)
-      // this.editor.textsFromUpload = SAMPLE_TEXT_DATA
-
+      // this.editor.imagesFromUpload = SAMPLE_IMAGE_DATA.data
+      // this.editor.textsFromUpload = SAMPLE_TEXT_DATA[0].data
+      // console.log(this.editor.imagesFromUpload)
+      
       this.editor.initCanvas();
       this.pickerColor = this.editor.slides?.[0].backgroundColor as string;
       this.editor.initRender();
@@ -87,7 +88,6 @@ export class EditorComponent implements OnInit {
       })
 
       let slidesData = this.editor.getSlidesData()
-      console.log(slidesData)
       let response = await firstValueFrom(this.api.exportPresentation({data: slidesData}))
       this.dialog.closeAll()
       const base64Data = response.data; // Assuming response.data contains the base64 data

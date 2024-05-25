@@ -1,188 +1,5 @@
-export const SAMPLE_TEMPLATES = {
-        0: [
-          {
-            "number": 0,
-            "height": 400,
-            "width": 800,
-            "backgroundColor": "#fffaa3",
-            "objects": [
-              {
-                "id": 1716125341697,
-                "src": "https://ik.imagekit.io/jveduNBx7CU/img_p0_1_X0fBsmlIh",
-                "type": "image",
-                "left": 80,
-                "top": 160,
-                "scaleX": 1.0548109354160253,
-                "scaleY": 1.0548109354160253,
-                "flipX": false,
-                "flipY": false,
-                "angle": 0
-              },
-              {
-                "type": "text",
-                "text": "A Heading",
-                "textType": "heading",
-                "width": 146.078125,
-                "height": 33.89999999999999,
-                "fontFamily": "arial",
-                "fontWeight": "normal",
-                "fontSize": 30,
-                "scaleX": 1.2660862397609602,
-                "scaleY": 1.2660862397609602,
-                "textAlign": "left",
-                "cursorColor": "blue",
-                "left": 420,
-                "top": 100,
-                "fill": "#000000",
-                "angle": 0,
-                "id": 1716125345331
-              },
-              {
-                "type": "text",
-                "text": "Pokémon as mysterious creatures with many secrets living alongside humans or in the wild. They can be caught using a Poké Ball for carrying around. The exact number of Pokémon species is unknown, with over 1000 confirmed and potentially more to be discovered in the future.",
-                "textType": "body",
-                "width": 152.05343340341338,
-                "height": 116.164,
-                "fontFamily": "arial",
-                "fontWeight": "normal",
-                "fontSize": 10,
-                "scaleX": 1.7842012356575456,
-                "scaleY": 1.7842012356575456,
-                "cursorColor": "blue",
-                "left": 420,
-                "top": 160,
-                "textAlign": "left",
-                "fill": "#000000",
-                "angle": 0,
-                "id": 1716125378994
-              }
-            ],
-            "thumbnail": null
-          },
-          {
-            "number": 1,
-            "height": 400,
-            "width": 800,
-            "backgroundColor": "#ffa3a3",
-            "objects": [
-              {
-                "type": "text",
-                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-                "textType": "body",
-                "width": 207.75817875685905,
-                "height": 37.516,
-                "fontFamily": "arial",
-                "fontWeight": "normal",
-                "fontSize": 10,
-                "scaleX": 1.6865357184882606,
-                "scaleY": 1.610277557740145,
-                "cursorColor": "blue",
-                "left": 220,
-                "top": 100,
-                "textAlign": "center",
-                "fill": "#000000",
-                "angle": 0,
-                "id": 1716128148627
-              },
-              {
-                "type": "text",
-                "text": "A Heading",
-                "textType": "heading",
-                "width": 187.078125,
-                "height": 33.89999999999999,
-                "fontFamily": "arial",
-                "fontWeight": "bold",
-                "fontSize": 30,
-                "scaleX": 1,
-                "scaleY": 1,
-                "textAlign": "center",
-                "cursorColor": "blue",
-                "left": 300,
-                "top": 59.99999999999999,
-                "fill": "#000000",
-                "angle": 0,
-                "id": 1716128174787
-              },
-              {
-                "id": 1716128205611,
-                "src": "https://ik.imagekit.io/jveduNBx7CU/img_p2_1_8rPGgcabA",
-                "type": "image",
-                "left": 220,
-                "top": 180,
-                "scaleX": 0.6677782012195119,
-                "scaleY": 0.6677782012195119,
-                "flipX": false,
-                "flipY": false,
-                "angle": 0
-              }
-            ],
-            "thumbnail": null
-          },
-          {
-            "number": 2,
-            "height": 400,
-            "width": 800,
-            "backgroundColor": "#a3feff",
-            "objects": [
-              {
-                "type": "text",
-                "text": "A Heading",
-                "textType": "heading",
-                "width": 147.078125,
-                "height": 33.89999999999999,
-                "fontFamily": "arial",
-                "fontWeight": "normal",
-                "fontSize": 30,
-                "scaleX": 1,
-                "scaleY": 1,
-                "textAlign": "left",
-                "cursorColor": "blue",
-                "left": 60,
-                "top": 120,
-                "fill": "#000000",
-                "angle": 0,
-                "id": 1716128265474
-              },
-              {
-                "type": "text",
-                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-                "textType": "body",
-                "width": 149.0360923473753,
-                "height": 50.623999999999995,
-                "fontFamily": "arial",
-                "fontWeight": "normal",
-                "fontSize": 10,
-                "scaleX": 2.160001103265666,
-                "scaleY": 2.160001103265666,
-                "cursorColor": "blue",
-                "left": 60,
-                "top": 160,
-                "textAlign": "left",
-                "fill": "#000000",
-                "angle": 0,
-                "id": 1716128275291
-              },
-              {
-                "id": 1716128294227,
-                "src": "https://ik.imagekit.io/jveduNBx7CU/img_p1_1_zMRc8Sx5Im",
-                "type": "image",
-                "left": 440,
-                "top": 80,
-                "scaleX": 0.8114816107415329,
-                "scaleY": 0.8114816107415329,
-                "flipX": false,
-                "flipY": false,
-                "angle": 0
-              }
-            ],
-            "thumbnail": null
-          }
-        ]
-    }
-
-
-
 export const SAMPLE_TEXT_DATA = {
+  0: {
     "success": true,
     "code": 200,
     "data": [
@@ -196,7 +13,7 @@ export const SAMPLE_TEXT_DATA = {
         },
         {
             "page": 3,
-            "text": "The Pokémon video games were unique because players could exchange Pokémon between different versions, aiming to complete the Pokédex. Some Pokémon are challenging to catch, and rare ones only appear in specific game versions, encouraging players to cooperate with others to catch them. This cooperation grows from small trading rings to larger ones as more people play together, increasing the fun of the game."
+            
         },
         {
             "page": 4,
@@ -208,6 +25,33 @@ export const SAMPLE_TEXT_DATA = {
         }
     ],
     "message": "Request success"
+  },
+  1:{
+    "success": true,
+    "code": 200,
+    "data": [ 
+        {
+            "page": 1,
+            "text": "Oranges are a healthy snack or addition to a meal that contains only about 60 calories and no fat, cholesterol or sodium. They also provide more than 100% of the daily vitamin C requirement, which can help your body to protect cells, produce collagen and absorb iron."
+        },
+        {
+            "page": 2,
+            "text": "Some research suggests that the vitamin C in oranges may be linked with a lower risk of certain cancers, including colon cancer, due to preventing DNA mutations.\nOranges are a good source of vitamin C, fiber, potassium and choline, as well as folate and thiamine, two important forms of vitamin B. Folate helps lower levels of homocysteine, an amino acid linked with poor heart health."
+        },
+        {
+            "page": 3,
+            "text": "The flavor of an orange comes from a combination of volatile compounds, sugars and acids. Blood oranges are higher in anthocyanins than naveloranges, which provide them with their bright red color."
+        },
+        {
+            "page": 4,
+            "text": "Orange peels are not poisonous, but they can be hard to digest and may contain chemicals. If you do eat an orange's peel, wash it well first to remove any pesticide residue and consume small quantities.\nFlavonoids are present in the peel of oranges and are known to lower blood pressure and reduce inflammation."
+        },
+        {
+            "page": 5
+        }
+    ],
+    "message": "Request success"
+}
 }
 
 
@@ -215,54 +59,320 @@ export const SAMPLE_IMAGE_DATA = {
   "success": true,
   "code": 200,
   "data": [
-      {
-          "page": 1,
-          "name": "img_p0_1_X0fBsmlIh",
-          "url": "https://ik.imagekit.io/jveduNBx7CU/img_p0_1_X0fBsmlIh",
-          "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p0_1_X0fBsmlIh"
-      },
-      {
-          "page": 1,
-          "name": "img_p0_3_sBDL4_B-z",
-          "url": "https://ik.imagekit.io/jveduNBx7CU/img_p0_3_sBDL4_B-z",
-          "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p0_3_sBDL4_B-z"
-      },
-      {
-          "page": 1,
-          "name": "img_p0_4_ZIUZYf7az",
-          "url": "https://ik.imagekit.io/jveduNBx7CU/img_p0_4_ZIUZYf7az",
-          "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p0_4_ZIUZYf7az"
-      },
-      {
-          "page": 1,
-          "name": "img_p0_2_sqZ6wYQvb",
-          "url": "https://ik.imagekit.io/jveduNBx7CU/img_p0_2_sqZ6wYQvb",
-          "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p0_2_sqZ6wYQvb"
-      },
-      {
-          "page": 2,
-          "name": "img_p1_1_zMRc8Sx5Im",
-          "url": "https://ik.imagekit.io/jveduNBx7CU/img_p1_1_zMRc8Sx5Im",
-          "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p1_1_zMRc8Sx5Im"
-      },
-      {
-          "page": 4,
-          "name": "img_p3_1_NFMJD9qKnQ",
-          "url": "https://ik.imagekit.io/jveduNBx7CU/img_p3_1_NFMJD9qKnQ",
-          "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p3_1_NFMJD9qKnQ"
-      },
-      {
-          "page": 3,
-          "name": "img_p2_1_8rPGgcabA",
-          "url": "https://ik.imagekit.io/jveduNBx7CU/img_p2_1_8rPGgcabA",
-          "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p2_1_8rPGgcabA"
-      },
-      {
-          "page": 5,
-          "name": "img_p4_1_j1q7jkUpC",
-          "url": "https://ik.imagekit.io/jveduNBx7CU/img_p4_1_j1q7jkUpC",
-          "thumbnailUrl": "https://ik.imagekit.io/jveduNBx7CU/tr:n-ik_ml_thumbnail/img_p4_1_j1q7jkUpC"
-      }
-  ],
+    {
+        "page": "page1",
+        "images": [
+            {
+                "name": "uploadedFile-page1-image2_SEmhCLHsW.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page1-image2_SEmhCLHsW.tiff"
+            },
+            {
+                "name": "uploadedFile-page1-image1_5rRgEJp1j.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page1-image1_5rRgEJp1j.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page4",
+        "images": [
+            {
+                "name": "uploadedFile-page4-image3_k-OKfU1deD.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page4-image3_k-OKfU1deD.tiff"
+            },
+            {
+                "name": "uploadedFile-page4-image1_SbYXuR9vm9.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page4-image1_SbYXuR9vm9.tiff"
+            },
+            {
+                "name": "uploadedFile-page4-image2_FHBUm-Udp.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page4-image2_FHBUm-Udp.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page18",
+        "images": [
+            {
+                "name": "uploadedFile-page18-image1__qx7Py2yU7.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page18-image1__qx7Py2yU7.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page2",
+        "images": [
+            {
+                "name": "uploadedFile-page2-image3_8UsFGIya7.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page2-image3_8UsFGIya7.tiff"
+            },
+            {
+                "name": "uploadedFile-page2-image2_S_fFOq8yLW.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page2-image2_S_fFOq8yLW.tiff"
+            },
+            {
+                "name": "uploadedFile-page2-image1_VtZHMsUMqZ.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page2-image1_VtZHMsUMqZ.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page6",
+        "images": [
+            {
+                "name": "uploadedFile-page6-image1_BiidJYXffE.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page6-image1_BiidJYXffE.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page29",
+        "images": [
+            {
+                "name": "uploadedFile-page29-image1_-5A-YzG93s.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page29-image1_-5A-YzG93s.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page7",
+        "images": [
+            {
+                "name": "uploadedFile-page7-image4_6yzFKY6Kf.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page7-image4_6yzFKY6Kf.tiff"
+            },
+            {
+                "name": "uploadedFile-page7-image1_Ho4HXx-a31.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page7-image1_Ho4HXx-a31.tiff"
+            },
+            {
+                "name": "uploadedFile-page7-image3__4U6iE-QP0.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page7-image3__4U6iE-QP0.tiff"
+            },
+            {
+                "name": "uploadedFile-page7-image2_F1b2ty7zcq.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page7-image2_F1b2ty7zcq.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page8",
+        "images": [
+            {
+                "name": "uploadedFile-page8-image1_zyVBf4CFPF.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page8-image1_zyVBf4CFPF.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page5",
+        "images": [
+            {
+                "name": "uploadedFile-page5-image2_MxtNLj3S4T.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page5-image2_MxtNLj3S4T.tiff"
+            },
+            {
+                "name": "uploadedFile-page5-image1_AfFFR2Iq7.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page5-image1_AfFFR2Iq7.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page3",
+        "images": [
+            {
+                "name": "uploadedFile-page3-image1__y_jHk3Qq.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page3-image1__y_jHk3Qq.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page23",
+        "images": [
+            {
+                "name": "uploadedFile-page23-image2_wCNLOTi5C1.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page23-image2_wCNLOTi5C1.tiff"
+            },
+            {
+                "name": "uploadedFile-page23-image1_YLf7NlcGEk.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page23-image1_YLf7NlcGEk.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page13",
+        "images": [
+            {
+                "name": "uploadedFile-page13-image1_pljjEBrrKF.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page13-image1_pljjEBrrKF.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page16",
+        "images": [
+            {
+                "name": "uploadedFile-page16-image1_R8Pu1AV5wc.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page16-image1_R8Pu1AV5wc.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page11",
+        "images": [
+            {
+                "name": "uploadedFile-page11-image1_E_3UuWVZrv.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page11-image1_E_3UuWVZrv.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page14",
+        "images": [
+            {
+                "name": "uploadedFile-page14-image1_N1QMij7Chl.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page14-image1_N1QMij7Chl.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page28",
+        "images": [
+            {
+                "name": "uploadedFile-page28-image1_1fdjTydjUz.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page28-image1_1fdjTydjUz.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page15",
+        "images": [
+            {
+                "name": "uploadedFile-page15-image1_GLvgybqR5y.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page15-image1_GLvgybqR5y.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page24",
+        "images": [
+            {
+                "name": "uploadedFile-page24-image1_DP3Zd7sbl1.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page24-image1_DP3Zd7sbl1.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page12",
+        "images": [
+            {
+                "name": "uploadedFile-page12-image2_TXp6xwaNpt.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page12-image2_TXp6xwaNpt.tiff"
+            },
+            {
+                "name": "uploadedFile-page12-image1_Txjwnld2tm.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page12-image1_Txjwnld2tm.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page22",
+        "images": [
+            {
+                "name": "uploadedFile-page22-image1_2Gx_67b2Li.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page22-image1_2Gx_67b2Li.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page19",
+        "images": [
+            {
+                "name": "uploadedFile-page19-image1_AZlMW722XJ.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page19-image1_AZlMW722XJ.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page10",
+        "images": [
+            {
+                "name": "uploadedFile-page10-image1_Z4oT9LdgCU.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page10-image1_Z4oT9LdgCU.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page27",
+        "images": [
+            {
+                "name": "uploadedFile-page27-image1_vyHmPsdR6u.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page27-image1_vyHmPsdR6u.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page25",
+        "images": [
+            {
+                "name": "uploadedFile-page25-image1_DmmB438jq9.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page25-image1_DmmB438jq9.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page21",
+        "images": [
+            {
+                "name": "uploadedFile-page21-image1_9yQJOwYozm.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page21-image1_9yQJOwYozm.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page30",
+        "images": [
+            {
+                "name": "uploadedFile-page30-image1_JbMhK_ND_E.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page30-image1_JbMhK_ND_E.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page26",
+        "images": [
+            {
+                "name": "uploadedFile-page26-image1_mbVY_M8V-q.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page26-image1_mbVY_M8V-q.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page20",
+        "images": [
+            {
+                "name": "uploadedFile-page20-image1_nITdkUvxBY.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page20-image1_nITdkUvxBY.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page17",
+        "images": [
+            {
+                "name": "uploadedFile-page17-image1_ASxioRtzxw.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page17-image1_ASxioRtzxw.tiff"
+            }
+        ]
+    },
+    {
+        "page": "page9",
+        "images": [
+            {
+                "name": "uploadedFile-page9-image1_S_2diUxCHE.tiff",
+                "url": "https://ik.imagekit.io/jveduNBx7CU/uploadedFile-page9-image1_S_2diUxCHE.tiff"
+            }
+        ]
+    }
+],
   "message": "Request success"
 }
