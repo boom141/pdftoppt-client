@@ -76,7 +76,7 @@ export class EditorComponent implements OnInit {
       // this.editor.imagesFromUpload = SAMPLE_IMAGE_DATA.data
       // this.editor.textsFromUpload = SAMPLE_TEXT_DATA[0].data
       // console.log(this.editor.imagesFromUpload)
-      
+
       this.editor.initCanvas();
       this.pickerColor = this.editor.slides?.[0].backgroundColor as string;
       this.editor.initRender();
@@ -123,7 +123,9 @@ export class EditorComponent implements OnInit {
     }
 
     addSlides(): void{
-      this.editor.slides = [...this.editor.slides as any, this.editor.createSlides()]
+      let newSlide = this.editor.createSlides()
+      console.log('new slide', newSlide)
+      this.editor.slides = [...this.editor.slides as any, newSlide]
       this.editor.saveSlidesData();
     }
 

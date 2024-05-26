@@ -25,48 +25,22 @@ export class EditorService {
     setData = new EventEmitter()
     showLoading = new EventEmitter()
 
-    organizedPerPage(data:any){
-      let imageStorage:any = Array.from({ length: this.maxPage }, () => [])
-      data.forEach( (obj:any) => {
-        imageStorage[obj.page-1] = [...imageStorage[obj.page-1], obj]
-      })
-      return imageStorage
-    }
-
     loadTemplate(templateId:any): void{   
       const backgroundColor = ['#ffc2c2', '#ffedc2', '#eaffc2', '#c2fbff', '#c5c2ff']
       let newTemplate:any = []
       
-      for(let i=0; i<this.maxPage; i++){
+      this.slideCount = 0
+      this.textsFromUpload.forEach((obj:any) => {
         let newSlide = this.createSlides()
+        console.log(this.slideCount)
         newSlide.backgroundColor = backgroundColor[Math.floor(Math.random() * backgroundColor.length)]
-
-        let newImageObject: any;
-        if(this.imagesFromUpload[i][0]){
-          newImageObject = {
-            id: this.createId(),
-            src: this.imagesFromUpload[i][0].url,
-            type: 'image',
-            left: 100,
-            top: 100,
-            scaleX: 0.7,
-            scaleY: 0.7,
-            flipX: false,
-            flipY: false,
-            angle: 0
-          }
-        }
-
-        if(newImageObject !== undefined){
-          newSlide.objects = [...newSlide.objects, newImageObject]
-        }
 
         const newTextObject = {
           id: this.createId(),
           type: 'text',
-          text: this.textsFromUpload[i].text,
+          text: obj.text,
           textType: 'body',
-          width: 500,
+          width: 800,
           height: 100,
           fontFamily: 'arial',
           fontWeight: 'normal',
@@ -74,24 +48,94 @@ export class EditorService {
           scaleX: 0.5,
           scaleY: 0.5,
           cursorColor: 'blue',
-          left: 500,
-          top: 100,
-          textAlign: 'left',
+          left: 200,
+          top: 150,
+          textAlign: 'center',
           fill: '#000000',
           angle: 0 
         }
 
-        if(newTextObject !== undefined){
-          newSlide.objects = [...newSlide.objects, newTextObject]
-        }
-    
-        newTemplate = [...newTemplate as any, newSlide]
-      }
+        this.imagesFromUpload.forEach((imageObj:any) => {
+          if(Number(imageObj.page) === obj.page){
+              let newImageObject = {
+                id: this.createId(),
+                src: imageObj.images[0].url,
+                type: 'image',
+                left: 100,
+                top: 100,
+                scaleX: 0.7,
+                scaleY: 0.7,
+                flipX: false,
+                flipY: false,
+                angle: 0
+              }
 
+              newTextObject.width = 500
+              newTextObject.top = 100
+              newTextObject.left = 500
+              newTextObject.textAlign = 'left'
+
+              newSlide.objects = [...newSlide.objects, newImageObject]
+          }
+        });
+
+        newSlide.objects = [...newSlide.objects, newTextObject]
+        newTemplate = [...newTemplate as any, newSlide]
+      })
+      
       this.slides = newTemplate 
-      console.log('new slide', this.slides)
       this.saveSlidesData()
       this.initRender()
+
+      // for(let i=0; i<this.maxPage; i++){
+
+      //   let newImageObject: any;
+      //   if(this.imagesFromUpload[i][0]){
+      //     newImageObject = {
+      //       id: this.createId(),
+      //       src: this.imagesFromUpload[i][0].url,
+      //       type: 'image',
+      //       left: 100,
+      //       top: 100,
+      //       scaleX: 0.7,
+      //       scaleY: 0.7,
+      //       flipX: false,
+      //       flipY: false,
+      //       angle: 0
+      //     }
+      //   }
+
+      //   if(newImageObject !== undefined){
+      //     newSlide.objects = [...newSlide.objects, newImageObject]
+      //   }
+
+      //   const newTextObject = {
+      //     id: this.createId(),
+      //     type: 'text',
+      //     text: this.textsFromUpload[i].text,
+      //     textType: 'body',
+      //     width: 500,
+      //     height: 100,
+      //     fontFamily: 'arial',
+      //     fontWeight: 'normal',
+      //     fontSize: 30,      
+      //     scaleX: 0.5,
+      //     scaleY: 0.5,
+      //     cursorColor: 'blue',
+      //     left: 500,
+      //     top: 100,
+      //     textAlign: 'left',
+      //     fill: '#000000',
+      //     angle: 0 
+      //   }
+
+      //   if(newTextObject !== undefined){
+      //     newSlide.objects = [...newSlide.objects, newTextObject]
+      //   }
+    
+      //   newTemplate = [...newTemplate as any, newSlide]
+      // }
+
     }
 
     createId(): number{
@@ -105,8 +149,8 @@ export class EditorService {
     initCanvas(): void {
       this.canvas = new fabric.Canvas('app-canvas',{backgroundColor: 'white'});
       let slidesData = this.getSlidesData()
-      this.slides = slidesData ? slidesData : [this.createSlides()]
       this.slideCount = slidesData ? slidesData.slice(-1)[0].number + 1 : 0;
+      this.slides = slidesData ? slidesData : [this.createSlides()]
       this.saveSlidesData();
     }
 

@@ -35,7 +35,7 @@
                 </div>
            </div>
            @if(isToolContent){
-               <div class="w-[20rem] h-screen">
+               <div class="w-[30rem] h-screen">
                     <div class="overflow-y-auto h-full ">
                         <ng-container >
                                 @if(currentTool == 'elements'){
@@ -78,7 +78,7 @@
                                     <img class="pointer-events-none" width="30" height="30" src="https://img.icons8.com/windows/32/FFFFFF/trash.png" alt="trash"/>
                                 </div>
                             }
-                            <app-slide-container class="flex-shrink-0" (changeActiveSlide)="selectActiveSlide($event)" [id]="slide.number - 1"></app-slide-container>
+                            <app-slide-container class="flex-shrink-0" (changeActiveSlide)="selectActiveSlide($event)" [id]="slide.number"></app-slide-container>
                         </div>
                     }
                    <button (click)="addSlides()" class="border border-slate-400 rounded-md h-[5rem] w-[9rem] flex justify-center items-center bg-slate-300">
